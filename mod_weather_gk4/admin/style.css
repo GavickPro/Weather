@@ -1,0 +1,51 @@
+::-moz-selection { background: #fec23d; color: #fff }
+::selection { background: #fec23d; color: #fff }
+#jform_params_about_us-lbl,
+#jform_params_tabs_data-lbl,
+#jform_params___field1-lbl,
+#invisible { display: none; }
+.switcher-on,
+.switcher-off { width:94px; height:27px; background:transparent url('switcher.png') no-repeat 0 0; cursor:pointer; float: left; margin-top: 3px; }
+.switcher-off { background-position:-94px 0; }
+span.unit { line-height:34px; }
+/* togglers */
+
+.pane-sliders .panel { border: none !important; }
+div.panel > h3 { height: 43px; background: transparent url('interface.png') repeat-x 0 0 !important; border: 1px solid #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; font: bold 12px/43px Arial, Helvetica, sans-serif; text-transform: uppercase; }
+div.panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
+div.panel > h3 a:hover,
+div.panel h3.pane-toggler-down a { color: #c78900 }
+div.panel h3.pane-toggler-down { border-bottom: 4px solid #fec23d !important }
+.pane-toggler span { background: transparent url('j_arrow.png') no-repeat 5px 50% !important; }
+.pane-toggler-down span { background: transparent url('j_arrow_down.png') no-repeat 5px 50% !important; }
+.pane-sliders .content { margin: 4px auto; width: 99%; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+.gkHelpLink { float: right !important; width: 22px; height: 21px; cursor: pointer; margin: 11px 12px 0 10px; background: transparent url('interface.png') repeat-x 0 -70px !important; }
+a:hover.gkHelpLink { background-position: 0 -47px !important; }
+/* form elements in the container */
+.panel fieldset.panelform > ul > li > label { color: #444; font-size: 11px; font-weight: bold; height: 24px; line-height: 24px; padding: 0 20px 0 10px; text-align: right; max-width: 30%!important; min-width: 30%!important; }
+.panel fieldset.panelform > ul > li fieldset { line-height:28px; }
+fieldset.panelform input { height: 16px; color: #555; line-height: 16px; padding: 4px; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; }
+fieldset.panelform input.small { width: 40px; }
+fieldset.panelform input.tright { text-align: right; }
+fieldset.panelform input[type=button] { height: 26px; line-height: 26px; }
+fieldset.panelform select { height: 26px; color: #555; line-height: 24px; padding: 4px; font-size:11px; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; }
+fieldset.panelform select.position { width: 80px!important; }
+fieldset.panelform textarea { padding: 4px; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; }
+fieldset.panelform select[multiple=multiple] { height: 150px; }
+.fltrt ul.adminformlist li { overflow: hidden; border-bottom: 1px solid #eee; padding: 1px 10px; margin: 0; }
+fieldset.panelform .label { font-size: 11px; font-weight: bold; width: auto; padding: 0 5px; line-height:34px; }
+fieldset.panelform .desc { font-size: 11px; font-weight: normal; width: auto; padding: 10px; }
+#gkDemoLink { color: #C78900; line-height: 36px; margin: 0 0 0 10px; }
+#gkDemoLink:hover { text-decoration:none; color: #222; }
+
+/* Updates */
+
+#gk_module_updates { margin: 20px -10px 0; border-right: 1px solid #eee }
+#gk_module_updates li { margin: 0; padding: 0; border: none; line-height: 34px; color: #555; border-top: 1px solid #eee }
+#gk_module_updates li span strong { padding: 0 12px 0 0 }
+#gk_module_updates li span { display: block; float: left; height: 34px; line-height: 34px; padding: 0 0 0 20px; border-left: 1px solid #eee }
+span.gk_update_version { width: 110px; background: #f5f5f5; }
+span.gk_update_data { width: 150px; background: #f9f9f9; }
+span.gk_update_link a { padding: 4px 12px; -moz-border-radius: 26px; background: #fec23d; text-transform: uppercase; font: bold 10px Arial, Helvetica, sans-serif; color: #fff; line-height: 34px; }
+span.gk_update_link a:hover { background: #222; text-decoration: none; }
+#gk_module_updates p { color: #555 }

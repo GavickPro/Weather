@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6.0" client="site" method="upgrade">
+        <name>mod_weather_gk4</name>
+        <creationDate>29/01/2012</creationDate>
+        <author>Gavick.com</author>
+        <copyright>(C) 2009-2011 Gavick.com</copyright>
+        <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+        <authorEmail>info@gavick.com</authorEmail>
+        <authorUrl>www.gavick.com</authorUrl>
+        <version>GK4 1.5</version>
+        <description><![CDATA[
+        	<style type="text/css">
+        	span.readonly { padding: 10px; font-family: Arial; font-size:13px !important; font-weight: normal !important; text-align: justify; color: #4d4d4d; line-height: 24px; }
+        	span.readonly h1 { clear:both; font-family: Georgia, sans-serif; font-size:38px; margin:30px 20px 23px; padding:0px 0px 24px 10px; color:#333; border-bottom: 1px solid #eee; font-weight: normal; }
+        	span.readonly p { margin: 0 26px 10px }
+        	#gk_about_us a,
+        	span.readonly p a { color: #c78900 }
+        	span.readonly p.homepage { margin-top: 30px }
+        	span.readonly p.license { border-top: 1px solid #eee; font-size: 11px; margin: 30px 26px 0; padding: 6px 0; }
+        	</style>
+        	<span class="readonly"><h1>Weather GK4<small>ver. 1.5</small></h1><p>GK4 is new generation of our extensions dedicated to Joomla! 1.7/2.5.</p><p>Weather GK4 is a module allowing to present weather forecast and current weather conditions in a location given. It supports two information sources, namely: API Google and API Yahoo! Weather.</p> <p class='homepage'><a href='http://tools.gavick.com/weather.html' target='_blank'>Learn more at the Weather GK4 project website.</a></p><p class='license'>Weather GK4 is released under the <a target="_blank" href="http://www.gnu.org/licenses/gpl-2.0.html">GNU/GPL v2 license.</a></p></span>
+        ]]></description>
+        <files>
+        	<filename module="mod_weather_gk4">mod_weather_gk4.php</filename>
+            <filename module="mod_weather_gk4">helper.php</filename>
+			<filename module="mod_weather_gk4">index.html</filename>
+            <folder>admin</folder>
+            <folder>cache</folder>
+			<folder>icons</folder>
+			<folder>style</folder>
+			<folder>tmpl</folder>
+        </files>
+        
+        <languages>
+   			<language tag="en-GB">language/en-GB.mod_weather_gk4.ini</language>
+		</languages>
+
+        <config>
+            <fields name="params">
+                <fieldset name="MOD_WEATHER_GK4_BASIC_SETTINGS" addfieldpath="/modules/mod_weather_gk4/admin/elements">
+
+                    <field type="asset" path="modules/mod_weather_gk4/admin/" />
+
+                    <field name="moduleclass_sfx" type="text" default="" label="MOD_WEATHER_GK4_MODCLASSSUFFIX" description="MOD_WEATHER_GK4_MODCLASSSUFFIX_DESC" />   
+
+                    <field name="module_unique_id" type="text" default="weather1" label="MOD_WEATHER_GK4_MODID" description="MOD_WEATHER_GK4_MODID_DESC" />
+                </fieldset>   
+
+				<fieldset name="MOD_WEATHER_GK4_SOURCE" addfieldpath="/modules/mod_weather_gk4/admin/elements">
+				
+					<field name="fullcity" type="text" default="Warsaw" label="MOD_WEATHER_GK4_FCITY" description="MOD_WEATHER_GK4_FCITY_DESC" />
+					
+					<field name="source" type="list" default="1" label="MOD_WEATHER_GK4_SOURCE_SELECT" description="MOD_WEATHER_GK4_SOURCE_SELECT_DESC">
+    					<option value="google">MOD_WEATHER_GK4_GOOGLE</option>
+                        <option value="yahoo">MOD_WEATHER_GK4_YAHOO</option>
+					</field>
+					
+					<field name="t_offset" type="list" default="0" label="MOD_WEATHER_GK4_T_OFFSET" description="MOD_WEATHER_GK4_T_OFFSET_DESC">
+						<option value="-12">-12</option>
+						<option value="-11">-11</option>
+						<option value="-10">-10</option>
+						<option value="-9">-9</option>
+						<option value="-8">-8</option>
+						<option value="-7">-7</option>
+						<option value="-6">-6</option>
+						<option value="-5">-5</option>
+						<option value="-4">-4</option>
+						<option value="-3">-3</option>
+						<option value="-2">-2</option>
+						<option value="-1">-1</option>
+						<option value="0">0</option>
+                        <option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</field>
+
+					<field name="timezone" type="list" default="0" label="MOD_WEATHER_GK4_TIMEZONE" description="MOD_WEATHER_GK4_TIMEZONE_DESC">
+						<option value="-12">-12</option>
+						<option value="-11">-11</option>
+						<option value="-10">-10</option>
+						<option value="-9">-9</option>
+						<option value="-8">-8</option>
+						<option value="-7">-7</option>
+						<option value="-6">-6</option>
+						<option value="-5">-5</option>
+						<option value="-4">-4</option>
+						<option value="-3">-3</option>
+						<option value="-2">-2</option>
+						<option value="-1">-1</option>
+						<option value="0">0</option>
+					    <option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</field>
+
+					<field name="city" type="text" default="Warsaw, Poland" label="MOD_WEATHER_GK4_CITY" description="MOD_WEATHER_GK4_CITY_DESC" />
+
+					<field name="language" type="text" default="en" label="MOD_WEATHER_GK4_LANG" description="MOD_WEATHER_GK4_LANG_DESC" />
+
+					<field name="encoding" type="text" default="" label="MOD_WEATHER_GK4_ENC" description="MOD_WEATHER_GK4_ENC_DESC" />
+
+					<field name="lat" type="text" default="null" label="MOD_WEATHER_GK4_LATITUDE" description="MOD_WEATHER_GK4_LATITUDE_DESC" />
+
+					<field name="lon" type="text" default="null" label="MOD_WEATHER_GK4_LONGITUDE" description="MOD_WEATHER_GK4_LONGITUDE_DESC" />
+
+					<field name="amountDays" type="list" default="4" label="MOD_WEATHER_GK4_AMOUNT_DAYS" description="MOD_WEATHER_GK4_AMOUNT_DAYS_DESC">
+					    <option value="1">1</option>
+					    <option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</field>
+
+					<field name="WOEID" type="text" default="523920" label="MOD_WEATHER_GK4_WOEID" description="MOD_WEATHER_GK4_WOEID_DESC" />
+
+					<field name="yahoo_icons" class="gk_switch" type="list" default="0" label="MOD_WEATHER_GK4_YAHOO_ICONS" description="MOD_WEATHER_GK4_YAHOO_ICONS_DESC">
+						<option value="1">MOD_WEATHER_GK4_ENABLED</option>
+					    <option value="0">MOD_WEATHER_GK4_DISABLED</option>
+					</field>
+				</fieldset>
+
+    			<fieldset name="MOD_WEATHER_GK4_LAYOUT" addfieldpath="/modules/mod_weather_gk4/admin/elements">	
+
+                    <field name="moduleMode" type="list" default="1" label="MOD_WEATHER_GK4_MODMODE" description="MOD_WEATHER_GK4_MODMODE_DESC">
+    					<option value="vertical">MOD_WEATHER_GK4_VERTICAL</option>
+                        <option value="horizontal">MOD_WEATHER_GK4_HORIZONTAL</option>
+                    </field>
+
+                    <field name="showCity" class="gk_switch" type="list" default="1" label="MOD_WEATHER_GK4_SHOWCITY" description="MOD_WEATHER_GK4_SHOWCITY_DESC">
+    					<option value="1">MOD_WEATHER_GK4_ENABLED</option>
+                        <option value="0">MOD_WEATHER_GK4_DISABLED</option>
+                    </field>
+
+    				<field name="showHum" class="gk_switch" type="list" default="1" label="MOD_WEATHER_GK4_SHOWHUM" description="MOD_WEATHER_GK4_SHOWHUM_DESC">
+    					<option value="1">MOD_WEATHER_GK4_ENABLED</option>
+                        <option value="0">MOD_WEATHER_GK4_DISABLED</option>
+                    </field>
+
+                    <field name="showWind" class="gk_switch" type="list" default="1" label="MOD_WEATHER_GK4_SHOWWIND" description="MOD_WEATHER_GK4_SHOWWIND_DESC">
+    					<option value="1">MOD_WEATHER_GK4_ENABLED</option>
+                        <option value="0">MOD_WEATHER_GK4_DISABLED</option>
+                    </field>
+
+                    <field name="tempUnit" type="list" default="c" label="MOD_WEATHER_GK4_UNIT" description="MOD_WEATHER_GK4_UNIT_DESC">
+    					<option value="c">Celsius</option>
+                        <option value="f">Farhenheit</option>
+                    </field>
+
+                    <field name="showPresent" class="gk_switch" type="list" default="1" label="MOD_WEATHER_GK4_SHOWPRESENT" description="MOD_WEATHER_GK4_SHOWPRESENT_DESC">
+                        <option value="1">MOD_WEATHER_GK4_ENABLED</option>
+    					<option value="0">MOD_WEATHER_GK4_DISABLED</option>
+                    </field>
+                    
+                    <field name="nextDays" class="gk_switch" type="list" default="1" label="MOD_WEATHER_GK4_NEXTDAYS" description="MOD_WEATHER_GK4_NEXTDAYS_DESC">
+                        <option value="1">MOD_WEATHER_GK4_ENABLED</option>
+    					<option value="0">MOD_WEATHER_GK4_DISABLED</option>
+                    </field>
+
+                    <field name="current_icon_size" type="list" default="64" label="MOD_WEATHER_GK4_CICONSIZE" description="MOD_WEATHER_GK4_CICONSIZE_DESC">
+                        <option value="128">128 x 128 px</option>
+    					<option value="64">64 x 64 px</option>
+    					<option value="32">32 x 32 px</option>
+                    </field>
+
+                    <field name="forecast_icon_size" type="list" default="32" label="MOD_WEATHER_GK4_FICONSIZE" description="MOD_WEATHER_GK4_FICONSIZE_DESC">
+                        <option value="128">128 x 128 px</option>
+    					<option value="64">64 x 64 px</option>
+    					<option value="32">32 x 32 px</option>
+                    </field>
+                </fieldset>	
+
+    			<fieldset name="MOD_WEATHER_GK4_EXTERNAL_FILES" addfieldpath="/modules/mod_weather_gk4/admin/elements">  
+       				<field name="useCSS" class="gk_switch" type="list" default="1" label="MOD_WEATHER_GK4_USECSS" description="MOD_WEATHER_GK4_USECSS_DESC">
+    					<option value="1">MOD_WEATHER_GK4_ENABLED</option>
+                        <option value="0">MOD_WEATHER_GK4_DISABLED</option>
+                    </field>
+                    
+                    <field name="useCache" class="gk_switch" type="list" default="1" label="MOD_WEATHER_GK4_USECACHE" description="MOD_WEATHER_GK4_USECACHE_DESC">
+    					<option value="1">MOD_WEATHER_GK4_ENABLED</option>
+                        <option value="0">MOD_WEATHER_GK4_DISABLED</option>
+                    </field>
+
+                    <field name="cacheTime" type="text" default="5" size="3" class="input-minutes" label="MOD_WEATHER_GK4_CACHETIME" description="MOD_WEATHER_GK4_CACHETIME_DESC"/>	
+                </fieldset>
+
+                <fieldset name="WEATHER_UPDATES" addfieldpath="/modules/mod_weather_gk4/admin/elements">
+                    <field type="update" name="module_updates" /> 
+                </fieldset>
+
+                <fieldset name="WEATHER_ABOUT_US" addfieldpath="/modules/mod_weather_gk4/admin/elements">
+                    <field type="about" name="about_us" /> 
+                </fieldset>
+            </fields>
+        </config>
+</extension>
