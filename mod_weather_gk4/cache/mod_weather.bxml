@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+		<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+			<channel>
+		
+<title>Yahoo! Weather - Warsaw, PL</title>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html</link>
+<description>Yahoo! Weather for Warsaw, PL</description>
+<language>en-us</language>
+<lastBuildDate>Mon, 27 Aug 2012 10:29 pm CEST</lastBuildDate>
+<ttl>60</ttl>
+<yweather:location city="Warsaw" region=""   country="Poland"/>
+<yweather:units temperature="C" distance="km" pressure="mb" speed="km/h"/>
+<yweather:wind chill="13"   direction="280"   speed="11.27" />
+<yweather:atmosphere humidity="77"  visibility="9.99"  pressure="1015.92"  rising="0" />
+<yweather:astronomy sunrise="5:40 am"   sunset="7:32 pm"/>
+<image>
+<title>Yahoo! Weather</title>
+<width>142</width>
+<height>18</height>
+<link>http://weather.yahoo.com</link>
+<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+</image>
+<item>
+<title>Conditions for Warsaw, PL at 10:29 pm CEST</title>
+<geo:lat>52.24</geo:lat>
+<geo:long>21.01</geo:long>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html</link>
+<pubDate>Mon, 27 Aug 2012 10:29 pm CEST</pubDate>
+<yweather:condition  text="Fair"  code="33"  temp="13"  date="Mon, 27 Aug 2012 10:29 pm CEST" />
+<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/33.gif"/><br />
+<b>Current Conditions:</b><br />
+Fair, 13 C<BR />
+<BR /><b>Forecast:</b><BR />
+Mon - Clear. High: 18 Low: 9<br />
+Tue - Sunny. High: 21 Low: 11<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+<yweather:forecast day="Mon" date="27 Aug 2012" low="9" high="18" text="Clear" code="31" />
+<yweather:forecast day="Tue" date="28 Aug 2012" low="11" high="21" text="Sunny" code="32" />
+<guid isPermaLink="false">PLXX0028_2012_08_28_7_00_CEST</guid>
+</item>
+</channel>
+</rss>
+
+<!-- api17.weather.ac4.yahoo.com Mon Aug 27 21:04:59 PST 2012 -->

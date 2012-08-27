@@ -238,12 +238,7 @@ class GKWHelper {
 		);
 		// get the config
 		$this->config['module_unique_id'] = $params->get('module_unique_id','weather1'); // unique ID
-        $this->config['city'] = str_replace(' ','%20',$params->get('city',''));
 		$this->config['fcity'] = $params->get('fullcity','');
-        $this->config['language'] = $params->get('language','en');
-        $this->config['encoding'] = $params->get('encoding', '');
-		$this->config['latitude'] = $params->get('lat','null');
-		$this->config['longitude'] = $params->get('lon','null');
 		$this->config['timezone'] = $params->get('timezone',0);
 		$this->config['moduleMode'] = $params->get('moduleMode','vertical');
 		$this->config['showCity'] = $params->get('showCity',1);
@@ -258,7 +253,7 @@ class GKWHelper {
 		$this->config['useCSS'] = $params->get('useCSS',1);
 		$this->config['useCache'] = $params->get('useCache',1);
 		$this->config['cacheTime'] = $params->get('cacheTime',5);
-		$this->config['source'] = $params->get('source', '');
+		$this->config['source'] = 'yahoo';
 		$this->config['WOEID'] = $params->get('WOEID', '');
 		$this->config['yahoo_icons'] = $params->get('yahoo_icons', '0');
         $this->config['t_offset'] = $params->get('t_offset', '');
@@ -268,15 +263,15 @@ class GKWHelper {
 	 **/	
 	function getData() {
 		clearstatcache();
+		
 		if($this->config['useCache'] == 1) {
-			if(filesize(realpath('cache/mod_weather.xml')) == 0 || ((filemtime(realpath('cache/mod_weather.xml')) + $this->config['cacheTime'] * 60) < time())) {
+			if(filesize(realpath('cache/mod_weather.bxml')) == 0 || ((filemtime(realpath('cache/mod_weather.bxml')) + $this->config['cacheTime'] * 60) < time())) {
 				if(function_exists('curl_init')) {
 					// initializing connection
 					$curl = curl_init();
 					// saves us before putting directly results of request
 					curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 					// url to get
-					$encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';
 				    // check the source of request
 				    if($this->config['source'] == 'google'){
 				    	curl_setopt($curl, CURLOPT_URL, 'http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
@@ -306,12 +301,14 @@ class GKWHelper {
 				// if error doesn't exist
 				if($this->error == '') {
 					// saving cache
-					JFile::write(realpath('modules/mod_weather_gk4/cache/mod_weather.xml'), $this->content);
+					if($this->content !='') {
+						JFile::write(realpath('modules/mod_weather_gk4/cache/mod_weather.bxml'), $this->content);
+					}
 				} else {
-				    $this->content = JFile::read(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.xml'));
+				    $this->content = JFile::read(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.bxml'));
 				}
 			} else {
-				$this->content = JFile::read(realpath('modules/mod_weather_gk4/cache/mod_weather.xml'));
+				$this->content = JFile::read(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.bxml'));
 			}
 		} else {
 			if(function_exists('curl_init')) {
@@ -396,23 +393,31 @@ class GKWHelper {
 								}
 							} else {
 								$problem = true;
+								$this->error = 'An error occured during parsing XML data. Please try again.';
 							}
 							// if problem detected
 							if($problem == true) {
 								$this->error = 'An error occured during parsing XML data. Please try again.';
 							} else {
 							    // prepare a backup
-							    JFile::write(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.xml'), $this->content);
+							    JFile::write(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.bxml'), $this->content);
 							}
 						} else { // if specified location doesn't exist
 							$this->error = 'An error occured - you set wrong location or data for your location are unavailable';
 						}
 					}
 				} else if($this->config['source'] == 'yahoo'){
+						$xml =  JFactory::getXMLParser('Simple');
                         $this->content = str_replace('yweather:','', $this->content);
                         $this->content = str_replace('geo:','', $this->content);
                         // load the XML content
+						if($this->content == '') {
+								$this->useBackup();
+						}
                         if($xml->loadString($this->content)) {
+							
+								
+							
 	                       	if(strpos($xml->document->channel[0]->description[0]->attributes('date'), "Error") == FALSE) {
 							$problem = false;
 	                        $current_info = $xml->document->channel[0];
@@ -433,9 +438,9 @@ class GKWHelper {
 	                           		$this->parsedData['current_condition'] =$current_info2->condition[0]->attributes('text');  
 	                            }
 								$this->parsedData['current_temp'] = $current_info2->condition[0]->attributes('temp')."&deg;".$current_info->units[0]->attributes('temperature');
-								$this->parsedData['current_humidity'] = "Humidity: ".$current_info->atmosphere[0]->attributes('humidity')."%";
+								$this->parsedData['current_humidity'] = JText::_('MOD_WEATHER_GK4_HUMIDITY') ." " .$current_info->atmosphere[0]->attributes('humidity')."%";
 	                            $this->parsedData['current_icon'] = $current_info2->condition[0]->attributes('code');
-								$this->parsedData['current_wind'] = "Wind: ".$current_info->wind[0]->attributes('speed')." ".$current_info->units[0]->attributes('speed');
+								$this->parsedData['current_wind'] = JText::_('MOD_WEATHER_GK4_WIND') ." ".$current_info->wind[0]->attributes('speed')." ".$current_info->units[0]->attributes('speed');
 	                            $this->parsedData['sunrise'] = $current_info->astronomy[0]->attributes('sunrise');
 	                            $this->parsedData['sunset'] = $current_info->astronomy[0]->attributes('sunset');
 	                            // parsing forecast
@@ -455,13 +460,14 @@ class GKWHelper {
 								}
 							} else {
 								$problem = true; // set the problem 
+								$this->error = 'An error occured during parsing XML data. Please try again.';
 							}
 							// if problem detected
 							if($problem == true) {
 								$this->error = 'An error occured during parsing XML data. Please try again.';
 							} else {
 							    // prepare a backup
-							    JFile::write(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.xml'), $this->content);
+							    JFile::write(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.bxml'), $this->content);
 							}
 						} else { // if specified location doesn't exist
 							$this->error = 'An error occured - you set wrong location or data for your location are unavailable';
@@ -481,6 +487,7 @@ class GKWHelper {
 	function renderLayout() {	
 		// if any error exists
 		if($this->error === '') {
+			
 			// create instances of basic Joomla! classes
 			$document =& JFactory::getDocument();
 			$uri =& JURI::getInstance();
@@ -491,7 +498,15 @@ class GKWHelper {
 			// include necessary view
 			require(JModuleHelper::getLayoutPath('mod_weather_gk4', ($this->config['source'] == 'google') ? 'googleView' : 'yahooView'));
 		} else { // else - output error information
-			echo $this->error;
+			print_r($this->content);
+			$this->useBackup();
+			$document =& JFactory::getDocument();
+			$uri =& JURI::getInstance();
+				if($this->config["useCSS"] == 1){
+				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/style/style.css', 'text/css' );
+			}
+			// include necessary view
+			require(JModuleHelper::getLayoutPath('mod_weather_gk4', ($this->config['source'] == 'google') ? 'googleView' : 'yahooView'));
 		}
 	}
 	/*
@@ -499,7 +514,7 @@ class GKWHelper {
      */
     function useBackup() {
         $this->error = '';
-        $this->content = JFile::read(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.xml'));
+        $this->content = JFile::read(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.bxml'));
     }
 	/*
 	 * Function to get correct icon
