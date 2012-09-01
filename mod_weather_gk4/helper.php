@@ -435,7 +435,7 @@ class GKWHelper {
 	                            if(isset($this->translation[$current_info2->condition[0]->attributes('text')])){
 									$this->parsedData['current_condition'] = $this->translation[$current_info2->condition[0]->attributes('text')];
 	                            } else {
-	                           		$this->parsedData['current_condition'] =$current_info2->condition[0]->attributes('text');  
+	                           		$this->parsedData['current_condition'] = $current_info2->condition[0]->attributes('text');  
 	                            }
 								$this->parsedData['current_temp'] = $current_info2->condition[0]->attributes('temp')."&deg;".$current_info->units[0]->attributes('temperature');
 								$this->parsedData['current_humidity'] = JText::_('MOD_WEATHER_GK4_HUMIDITY') ." " .$current_info->atmosphere[0]->attributes('humidity')."%";
@@ -451,7 +451,7 @@ class GKWHelper {
 	                            	   $this->cond_tmp = $forecast_info->forecast[$i]->attributes('text');
 	                            	}
 	                            	$this->parsedData['forecast'][$i] = array(
-										"day" => $forecast_info->forecast[$i]->attributes('date'),
+										"day" => $this->translateDate($forecast_info->forecast[$i]->attributes('date')),
 										"low" => $forecast_info->forecast[$i]->attributes('low')."&deg;".$current_info->units[0]->attributes('temperature'),
 										"high" => $forecast_info->forecast[$i]->attributes('high')."&deg;".$current_info->units[0]->attributes('temperature'),
 	                                    "icon" => $forecast_info->forecast[$i]->attributes('code'),
@@ -516,6 +516,37 @@ class GKWHelper {
         $this->error = '';
         $this->content = JFile::read(realpath('modules/mod_weather_gk4/cache/mod_weather.backup.bxml'));
     }
+    
+    
+    /*
+     *
+     */
+    function translateDate($date) {
+    
+    	preg_match('/[A-Za-z]{3,}/', $date, $month);
+     	$replace = '';
+   		
+    	switch($month[0]) {
+    		case 'Jan' : $replace = JText::_('MOD_WEATHER_GK4_JAN'); break;
+    		case 'Feb' : $replace = JText::_('MOD_WEATHER_GK4_FEB'); break;
+    		case 'Mar' : $replace = JText::_('MOD_WEATHER_GK4_MAR'); break;
+    		case 'Apr' : $replace = JText::_('MOD_WEATHER_GK4_APR'); break;
+    		case 'May' : $replace = JText::_('MOD_WEATHER_GK4_MAY'); break;
+    		case 'Jun' : $replace = JText::_('MOD_WEATHER_GK4_JUN'); break;
+    		case 'Jul' : $replace = JText::_('MOD_WEATHER_GK4_JUL'); break;
+    		case 'Aug' : $replace = JText::_('MOD_WEATHER_GK4_AUG'); break;
+    		case 'Sep' : $replace = JText::_('MOD_WEATHER_GK4_SEP'); break;
+    		case 'Oct' : $replace = JText::_('MOD_WEATHER_GK4_OCT'); break;
+    		case 'Nov' : $replace = JText::_('MOD_WEATHER_GK4_NOV'); break;
+    		case 'Dec' : $replace = JText::_('MOD_WEATHER_GK4_DEC'); break;
+    		default: $replace = $month[0];
+    	}
+    	
+    	$date = str_replace($month[0], $replace, $date);
+    	
+    	return $date;
+    } 
+     
 	/*
 	 * Function to get correct icon
 	 */

@@ -6,13 +6,13 @@
 <link>http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html</link>
 <description>Yahoo! Weather for Warsaw, PL</description>
 <language>en-us</language>
-<lastBuildDate>Mon, 27 Aug 2012 10:29 pm CEST</lastBuildDate>
+<lastBuildDate>Sat, 01 Sep 2012 9:29 pm CEST</lastBuildDate>
 <ttl>60</ttl>
 <yweather:location city="Warsaw" region=""   country="Poland"/>
 <yweather:units temperature="C" distance="km" pressure="mb" speed="km/h"/>
-<yweather:wind chill="13"   direction="280"   speed="11.27" />
-<yweather:atmosphere humidity="77"  visibility="9.99"  pressure="1015.92"  rising="0" />
-<yweather:astronomy sunrise="5:40 am"   sunset="7:32 pm"/>
+<yweather:wind chill="16"   direction="310"   speed="9.66" />
+<yweather:atmosphere humidity="94"  visibility="9.99"  pressure="1015.92"  rising="0" />
+<yweather:astronomy sunrise="5:46 am"   sunset="7:21 pm"/>
 <image>
 <title>Yahoo! Weather</title>
 <width>142</width>
@@ -21,28 +21,28 @@
 <url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
 </image>
 <item>
-<title>Conditions for Warsaw, PL at 10:29 pm CEST</title>
+<title>Conditions for Warsaw, PL at 9:29 pm CEST</title>
 <geo:lat>52.24</geo:lat>
 <geo:long>21.01</geo:long>
 <link>http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html</link>
-<pubDate>Mon, 27 Aug 2012 10:29 pm CEST</pubDate>
-<yweather:condition  text="Fair"  code="33"  temp="13"  date="Mon, 27 Aug 2012 10:29 pm CEST" />
+<pubDate>Sat, 01 Sep 2012 9:29 pm CEST</pubDate>
+<yweather:condition  text="Fair"  code="33"  temp="16"  date="Sat, 01 Sep 2012 9:29 pm CEST" />
 <description><![CDATA[
 <img src="http://l.yimg.com/a/i/us/we/52/33.gif"/><br />
 <b>Current Conditions:</b><br />
-Fair, 13 C<BR />
+Fair, 16 C<BR />
 <BR /><b>Forecast:</b><BR />
-Mon - Clear. High: 18 Low: 9<br />
-Tue - Sunny. High: 21 Low: 11<br />
+Sat - Cloudy. High: 26 Low: 16<br />
+Sun - Partly Cloudy. High: 23 Low: 13<br />
 <br />
 <a href="http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
 (provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
 ]]></description>
-<yweather:forecast day="Mon" date="27 Aug 2012" low="9" high="18" text="Clear" code="31" />
-<yweather:forecast day="Tue" date="28 Aug 2012" low="11" high="21" text="Sunny" code="32" />
-<guid isPermaLink="false">PLXX0028_2012_08_28_7_00_CEST</guid>
+<yweather:forecast day="Sat" date="1 Sep 2012" low="16" high="26" text="Cloudy" code="26" />
+<yweather:forecast day="Sun" date="2 Sep 2012" low="13" high="23" text="Partly Cloudy" code="30" />
+<guid isPermaLink="false">PLXX0028_2012_09_02_7_00_CEST</guid>
 </item>
 </channel>
 </rss>
 
-<!-- api17.weather.ac4.yahoo.com Mon Aug 27 21:04:59 PST 2012 -->
+<!-- api9.weather.ch1.yahoo.com Sat Sep  1 20:04:19 PST 2012 -->

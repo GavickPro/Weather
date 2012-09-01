@@ -15,7 +15,9 @@
 .gkwMainLeft { float:left; width:auto; }
 .gkwTemp { font-size:18px; text-align:center; margin:8px 0 0 0; }
 .gkwMainRight { float:left; width:auto; margin:0 0 0 16px; }
-.gkwMainRight h2 { margin: 4px 0 4px 0; }
+.gkwMainRight h2 { margin: 4px 0 4px 0; }
+.gkwMainRight p { font-size:  11px; margin:  0.5em 0; line-height: 1.1}
+
 .gkwCondition { }
 .gkwHumidity { }
 .gkwWind { }
