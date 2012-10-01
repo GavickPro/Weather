@@ -221,7 +221,13 @@ class GKWHelper {
             "Snow Showers"                      => JText::_('MOD_WEATHER_GK4_SNOW_SHOWERS'),
             "Isolated thundershowers"           => JText::_('MOD_WEATHER_GK4_ISOLATED_THUNDERSHOWERS'),
             "Not Available"                     => JText::_('MOD_WEATHER_GK4_NOT_AVAILABLE'),
-            "Mostly Clear"                      => JText::_('MOD_WEATHER_GK4_MOSTLY_CLEAR')
+            "Mostly Clear"                      => JText::_('MOD_WEATHER_GK4_MOSTLY_CLEAR'),
+            "Light Rain"						=> JText::_('MOD_WEATHER_GK4_LIGHT_RAIN'),
+            "Fog"								=> JText::_('MOD_WEATHER_GK4_FOG'),
+            "Thunder"							=> JText::_('MOD_WEATHER_GK4_THUNDER'),
+            "Mist"								=> JText::_('MOD_WEATHER_GK4_MIST'),
+            "Rain Shower"						=> JText::_('MOD_WEATHER_GK4_RAIN_SHOWER')
+            
         );
 		// parsed from XML data
 		$this->parsedData = array(

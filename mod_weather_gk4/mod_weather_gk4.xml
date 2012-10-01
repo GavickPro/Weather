@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="1.6.0" client="site" method="upgrade">
         <name>mod_weather_gk4</name>
+<<<<<<< HEAD
         <creationDate>03/09/2012</creationDate>
+=======
+        <creationDate>01/10/2012</creationDate>
+>>>>>>> Missing translation update
         <author>Gavick.com</author>
         <copyright>(C) 2009-2012 Gavick.com</copyright>
         <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
