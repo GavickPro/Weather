@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="1.6.0" client="site" method="upgrade">
         <name>mod_weather_gk4</name>
-        <creationDate>01/10/2012</creationDate>
-        <author>Gavick.com</author>
+		<creationDate>09/10/2012</creationDate>
+		<author>Gavick.com</author>
         <copyright>(C) 2009-2012 Gavick.com</copyright>
         <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
         <authorEmail>info@gavick.com</authorEmail>
@@ -188,4 +188,4 @@
                 </fieldset>
             </fields>
         </config>
-</extension>
+</extension>extension>
