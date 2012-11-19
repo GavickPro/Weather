@@ -309,13 +309,13 @@ class GKWHelper {
 				if($this->error == '') {
 					// saving cache
 					if($this->content !='') {
-						JFile::write(JPATH_SITE.'modules/mod_weather_gk4/cache/mod_weather.bxml', $this->content);
+						JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.bxml', $this->content);
 					}
 				} else {
-				    $this->content = JFile::read(JPATH_SITE.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
+				    $this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
 				}
 			} else {
-				$this->content = JFile::read(JPATH_SITE.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
+				$this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
 			}
 		} else {
 			if(function_exists('curl_init')) {
@@ -407,7 +407,7 @@ class GKWHelper {
 								$this->error = 'An error occured during parsing XML data. Please try again.';
 							} else {
 							    // prepare a backup
-							    JFile::write(JPATH_SITE.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml', $this->content);
+							    JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml', $this->content);
 							}
 						} else { // if specified location doesn't exist
 							$this->error = 'An error occured - you set wrong location or data for your location are unavailable';
@@ -474,7 +474,7 @@ class GKWHelper {
 								$this->error = 'An error occured during parsing XML data. Please try again.';
 							} else {
 							    // prepare a backup
-							    JFile::write(JPATH_SITE.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml', $this->content);
+							    JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml', $this->content);
 							}
 						} else { // if specified location doesn't exist
 							$this->error = 'An error occured - you set wrong location or data for your location are unavailable';
@@ -521,7 +521,7 @@ class GKWHelper {
      */
     function useBackup() {
         $this->error = '';
-        $this->content = JFile::read(JPATH_SITE.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
+        $this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
     }
     
     
