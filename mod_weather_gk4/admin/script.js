@@ -7,7 +7,7 @@ jQuery(document).ready(function() {
 	document.id('gk_about_us').getParent().setStyle('margin-left', '20px');
 	
 	// WOEID link
-	var woeidLink = jQuery('<a>', { 'href' : 'http://sigizmund.info/woeidinfo/', 'target' : '_blank',  'id' : 'gkDemoLink', 'html' : 'WOEID'});
+	var woeidLink = jQuery('<a>', { 'href' : 'http://isithackday.com/geoplanet-explorer/', 'target' : '_blank',  'id' : 'gkDemoLink', 'html' : 'WOEID'});
 	jQuery('#jform_params_WOEID').after(woeidLink);
 	// help link
 	var link = jQuery('<small>', { 'class' : 'gkHelpLink', 'href' : 'https://www.gavick.com/weather-gk4.html', 'target' : '_blank' });
