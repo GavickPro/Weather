@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="1.6.0" client="site" method="upgrade">
         <name>mod_weather_gk4</name>
-		<creationDate>19/11/2012</creationDate>
+		<creationDate>18/12/2012</creationDate>
 		<author>Gavick.com</author>
         <copyright>(C) 2009-2012 Gavick.com</copyright>
         <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
         <authorEmail>info@gavick.com</authorEmail>
         <authorUrl>www.gavick.com</authorUrl>
-        <version>GK4 1.6.4</version>
+        <version>GK4 1.6.5</version>
         <description><![CDATA[
         	<style type="text/css">
         	span.readonly { padding: 10px; font-family: Arial; font-size:13px !important; font-weight: normal !important; text-align: justify; color: #4d4d4d; line-height: 24px; }
@@ -18,7 +18,7 @@
         	span.readonly p.homepage { margin-top: 30px }
         	span.readonly p.license { border-top: 1px solid #eee; font-size: 11px; margin: 30px 26px 0; padding: 6px 0; }
         	</style>
-        	<span class="readonly"><h1>Weather GK4<small>ver. 1.6.4</small></h1><p>GK4 is new generation of our extensions dedicated to Joomla! 1.7/2.5.</p><p>Weather GK4 is a module allowing to present weather forecast and current weather conditions in a location given. It supports two information sources, namely: API Google and API Yahoo! Weather.</p> <p class='homepage'><a href='http://tools.gavick.com/weather.html' target='_blank'>Learn more at the Weather GK4 project website.</a></p><p class='license'>Weather GK4 is released under the <a target="_blank" href="http://www.gnu.org/licenses/gpl-2.0.html">GNU/GPL v2 license.</a></p></span>
+        	<span class="readonly"><h1>Weather GK4<small>ver. 1.6.5</small></h1><p>GK4 is new generation of our extensions dedicated to Joomla! 1.7/2.5.</p><p>Weather GK4 is a module allowing to present weather forecast and current weather conditions in a location given. It supports two information sources, namely: API Google and API Yahoo! Weather.</p> <p class='homepage'><a href='http://tools.gavick.com/weather.html' target='_blank'>Learn more at the Weather GK4 project website.</a></p><p class='license'>Weather GK4 is released under the <a target="_blank" href="http://www.gnu.org/licenses/gpl-2.0.html">GNU/GPL v2 license.</a></p></span>
         ]]></description>
         <files>
         	<filename module="mod_weather_gk4">mod_weather_gk4.php</filename>

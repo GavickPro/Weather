@@ -222,12 +222,22 @@ class GKWHelper {
             "Isolated thundershowers"           => JText::_('MOD_WEATHER_GK4_ISOLATED_THUNDERSHOWERS'),
             "Not Available"                     => JText::_('MOD_WEATHER_GK4_NOT_AVAILABLE'),
             "Mostly Clear"                      => JText::_('MOD_WEATHER_GK4_MOSTLY_CLEAR'),
+            
             "Light Rain"						=> JText::_('MOD_WEATHER_GK4_LIGHT_RAIN'),
+            
             "Fog"								=> JText::_('MOD_WEATHER_GK4_FOG'),
+            
             "Thunder"							=> JText::_('MOD_WEATHER_GK4_THUNDER'),
+            
             "Mist"								=> JText::_('MOD_WEATHER_GK4_MIST'),
+            
             "Rain Shower"						=> JText::_('MOD_WEATHER_GK4_RAIN_SHOWER'),
-            "Light Rain Showers"				=> JText::_('MOD_WEATHER_GK4_LIGHT_RAIN_SHOWERS')
+            
+            "Light Rain Showers"				=> JText::_('MOD_WEATHER_GK4_LIGHT_RAIN_SHOWERS'),
+            "Rain/Snow Showers"					=> JText::_('MOD_WEATHER_GK4_RAIN_SNOW_SHOWERS'),
+            "PM Rain/Snow Showers"				=> JText::_('MOD_WEATHER_GK4_PM_RAIN_SNOW_SHOWERS'),
+            "Light Snow"						=> JText::_('MOD_WEATHER_GK4_LIGHT_SNOW'),
+            "Snow Showers Late"					=> JText::_('MOD_WEATHER_GK4_SNOW_SHOWERS_LATE')  
             
         );
 		// parsed from XML data
