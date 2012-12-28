@@ -47,84 +47,13 @@ class GKWHelper {
 			'cacheTime' => 5,
 			'source' => 'yahoo',
 			'WOEID' => '',
-			'yahoo_icons' => 0,
+			'iconset' => 'default',
             't_offset' => '0'
 		); 
 		// error text
 		$this->error = '';
 		// icons array
 		$this->icons = array(
-			"/ig/images/weather/chance_of_snow.gif"  => array('chance_of_snow.png', 'chance_of_snow_night.png'),
-			"/ig/images/weather/flurries.gif"        => array('flurries.png'),
-			"/ig/images/weather/snow.gif"            => array('snow.png'),
-			"/ig/images/weather/sleet.gif"           => array('sleet.png'),
-			"/ig/images/weather/chance_of_rain.gif"  => array('chance_of_rain.png','chance_of_rain_night.png'),
-			"/ig/images/weather/chance_of_storm.gif" => array('chance_of_storm.png','chance_of_storm_night.png'),
-			"/ig/images/weather/mist.gif"            => array('mist.png','mist_night.png'),
-			"/ig/images/weather/showers.gif"         => array('showers.png','showers_night.png'),
-			"/ig/images/weather/rain.gif"            => array('rain.png'),
-			"/ig/images/weather/storm.gif"           => array('storm.png','storm_night.png'),
-			"/ig/images/weather/thunderstorm.gif"    => array('thunderstorm.png'),
-			"/ig/images/weather/rain_snow.gif"       => array('rain_and_snow.png'),
-			"/ig/images/weather/sunny.gif"           => array('sunny.png','sunny_night.png'),
-			"/ig/images/weather/mostly_sunny.gif"    => array('sunny.png','sunny_night.png'),
-			"/ig/images/weather/partly_cloudy.gif"   => array('partly_cloudy.png','partly_cloudy_night.png'),
-			"/ig/images/weather/mostly_cloudy.gif"   => array('mostly_cloudy.png','mostly_cloudy_night.png'),
-			"/ig/images/weather/cloudy.gif"          => array('cloudy.png'),
-			"/ig/images/weather/fog.gif"             => array('foggy.png','foggy_night.png'),
-			"/ig/images/weather/foggy.gif"           => array('foggy.png','foggy_night.png'),
-			"/ig/images/weather/smoke.gif"           => array('smoke.png','smoke_night.png'),
-			"/ig/images/weather/hazy.gif"            => array('hazy.png','hazy_night.png'),
-            "/ig/images/weather/haze.gif"            => array('hazy.png','hazy_night.png'),
-			"/ig/images/weather/dusty.gif"           => array('dusty.png','dusty_night.png'),
-            "/ig/images/weather/dust.gif"           => array('dusty.png','dusty_night.png'),
-			"/ig/images/weather/icy.gif"             => array('icy.png','icy_night.png'),
-            "/ig/images/weather/jp_chance_of_snow.gif"  => array('chance_of_snow.png', 'chance_of_snow_night.png'),
-			"/ig/images/weather/jp_flurries.gif"        => array('flurries.png'),
-			"/ig/images/weather/jp_snow.gif"            => array('snow.png'),
-			"/ig/images/weather/jp_sleet.gif"           => array('sleet.png'),
-			"/ig/images/weather/jp_chance_of_rain.gif"  => array('chance_of_rain.png','chance_of_rain_night.png'),
-			"/ig/images/weather/jp_chance_of_storm.gif" => array('chance_of_storm.png','chance_of_storm_night.png'),
-			"/ig/images/weather/jp_mist.gif"            => array('mist.png','mist_night.png'),
-			"/ig/images/weather/jp_showers.gif"         => array('showers.png','showers_night.png'),
-			"/ig/images/weather/jp_rain.gif"            => array('rain.png'),
-			"/ig/images/weather/jp_storm.gif"           => array('storm.png','storm_night.png'),
-			"/ig/images/weather/jp_thunderstorm.gif"    => array('thunderstorm.png'),
-			"/ig/images/weather/jp_rain_snow.gif"       => array('rain_and_snow.png'),
-			"/ig/images/weather/jp_sunny.gif"           => array('sunny.png','sunny_night.png'),
-			"/ig/images/weather/jp_mostly_sunny.gif"    => array('sunny.png','sunny_night.png'),
-			"/ig/images/weather/jp_partly_cloudy.gif"   => array('partly_cloudy.png','partly_cloudy_night.png'),
-			"/ig/images/weather/jp_mostly_cloudy.gif"   => array('mostly_cloudy.png','mostly_cloudy_night.png'),
-			"/ig/images/weather/jp_cloudy.gif"          => array('cloudy.png'),
-			"/ig/images/weather/jp_fog.gif"             => array('foggy.png','foggy_night.png'),
-			"/ig/images/weather/jp_foggy.gif"           => array('foggy.png','foggy_night.png'),
-			"/ig/images/weather/jp_smoke.gif"           => array('smoke.png','smoke_night.png'),
-            "/ig/images/weather/jp_rainy.gif"           => array('rain.png'),
-			"/ig/images/weather/jp_hazy.gif"            => array('hazy.png','hazy_night.png'),
-            "/ig/images/weather/jp_rainysometimescloudy.gif" => array('rain.png'),
-			"/ig/images/weather/jp_dusty.gif"           => array('dusty.png','dusty_night.png'),
-			"/ig/images/weather/jp_icy.gif"            => array('rain.png'),
-            "/ig/images/weather/jp_weatherdrizzle.gif"             => array('rain.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_drizzle.gif"  => array('rain.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_sleet-40.gif"                  => array('sleet.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_scatteredshowers-40.gif"       => array('chance_of_rain.png','chance_of_rain_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_scatteredthunderstorms-40.gif" => array('chance_of_storm.png','chance_of_storm_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_rain-40.gif"                   => array('rain.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_thunderstorms-40.gif"          => array('thunderstorm.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_snowflurries-40.gif"           => array('rain_and_snow.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_sunny-40.gif"                  => array('sunny.png','sunny_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_partlycloudy-40.gif"           => array('partly_cloudy.png','partly_cloudy_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_mostlycloudy-40.gif"           => array('mostly_cloudy.png','mostly_cloudy_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_cloudy-40.gif"                 => array('cloudy.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_overcast-40.gif"               => array('cloudy.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_fog-40.gif"                    => array('foggy.png','foggy_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_smoke-40.gif"                  => array('smoke.png','smoke_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_haze-40.gif"                   => array('hazy.png','hazy_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_dust-40.gif"                   => array('dusty.png','dusty_night.png'),
-			"http://g0.gstatic.com/images/icons/onebox/weather_icy-40.gif"                    => array('icy.png','icy_night.png'),
-            "http://g0.gstatic.com/images/icons/onebox/weather_drizzle-40.gif"                => array('rain.png'),
-            "http://g0.gstatic.com/images/icons/onebox/weather_windy-40.gif"                => array('cloudy.png'),
-            "http://g0.gstatic.com/images/icons/onebox/ weather_scatteredsnowshowers-40.gif"                => array('showers.png'),
             "0"                                  => array('other.png'),
             "1"                                  => array('storm.png','storm_night.png'),
             "2"                                  => array('storm.png','storm_night.png'),
@@ -222,17 +151,11 @@ class GKWHelper {
             "Isolated thundershowers"           => JText::_('MOD_WEATHER_GK4_ISOLATED_THUNDERSHOWERS'),
             "Not Available"                     => JText::_('MOD_WEATHER_GK4_NOT_AVAILABLE'),
             "Mostly Clear"                      => JText::_('MOD_WEATHER_GK4_MOSTLY_CLEAR'),
-            
             "Light Rain"						=> JText::_('MOD_WEATHER_GK4_LIGHT_RAIN'),
-            
             "Fog"								=> JText::_('MOD_WEATHER_GK4_FOG'),
-            
             "Thunder"							=> JText::_('MOD_WEATHER_GK4_THUNDER'),
-            
             "Mist"								=> JText::_('MOD_WEATHER_GK4_MIST'),
-            
             "Rain Shower"						=> JText::_('MOD_WEATHER_GK4_RAIN_SHOWER'),
-            
             "Light Rain Showers"				=> JText::_('MOD_WEATHER_GK4_LIGHT_RAIN_SHOWERS'),
             "Rain/Snow Showers"					=> JText::_('MOD_WEATHER_GK4_RAIN_SNOW_SHOWERS'),
             "PM Rain/Snow Showers"				=> JText::_('MOD_WEATHER_GK4_PM_RAIN_SNOW_SHOWERS'),
@@ -272,8 +195,10 @@ class GKWHelper {
 		$this->config['cacheTime'] = $params->get('cacheTime',5);
 		$this->config['source'] = 'yahoo';
 		$this->config['WOEID'] = $params->get('WOEID', '');
-		$this->config['yahoo_icons'] = $params->get('yahoo_icons', '0');
         $this->config['t_offset'] = $params->get('t_offset', '');
+        // new v1.6.5 feature
+         $this->config['iconset'] = $params->get('iconset', 'default');
+        
 	}
 	/**
 	 *	GETTING DATA
@@ -570,9 +495,9 @@ class GKWHelper {
 	function icon($icon, $size = 128) {
 		// creating JURI instance
 		$uri =& JURI::getInstance();
-		$icon_path = $uri->root().'modules/mod_weather_gk4/icons/'.(($size == 128) ? '' : $size.'/');
+		$icon_path = $uri->root().'modules/mod_weather_gk4/icons/'.$this->config['iconset'].'/'.(($size == 128) ? '' : $size.'/');
 		
-		if($this->config['source'] == 'google' || ($this->config['source'] == 'yahoo' && $this->config['yahoo_icons'] == 0)) {
+		if($this->config['iconset'] != 'yahoo') {
 			// if selected icon exists
 			if(is_array($this->icons[$icon])) {
 	            // if user use PHP5 and google feed
