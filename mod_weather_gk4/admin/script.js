@@ -26,14 +26,15 @@ function getUpdates() {
 	var update_url = 'https://www.gavick.com/updates.raw?task=json&tmpl=component&query=product&product=mod_weather_gk4_j30';
 	var update_div = jQuery('#gk_module_updates');
 	update_div.html('<div id="gk_update_div"><span id="gk_loader"></span>Loading update data from GavicPro Update service...</div>');
-
+	var content='';
+	
 	jQuery.getScript(update_url, function(data, textStatus, jqxhr) {
 		jQuery($GK_UPDATE).each(function(i, el){								        
             content += '<li><span class="gk_update_version"><strong>Version:</strong> ' + el.version + ' </span><span class="gk_update_data"><strong>Date:</strong> ' + el.date + ' </span><span class="gk_update_link"><a href="' + el.link + '" target="_blank">Download</a></span></li>';
 	     });
 	         
         update_div.html('<ul class="gk_updates">' + content + '</ul>');
-        if(update_div.html() == '<ul class="gk_updates">[object Window]</ul>') {
+        if(update_div.html() == '<ul class="gk_updates"></ul>') {
         	update_div.html('<p>There is no available updates for this module</p>'); 
     	}
     	if(update_div.html() == '<ul class="gk_updates"></ul>') {
