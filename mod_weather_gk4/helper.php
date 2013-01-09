@@ -331,7 +331,7 @@ class GKWHelper {
 	                            $this->parsedData['sunset'] = current($current_info->astronomy[0]->attributes()->sunset);
 	                            // parsing forecast
 	                            for($i = 0; $i < 2; $i++) {
-	                            	if(isset($this->translation[$forecast_info->forecast[$i]->attributes('text')])){
+	                            	if(isset($this->translation[current($forecast_info->forecast[$i]->attributes()->text)])){
 	                            		$this->cond_tmp = $this->translation[current($forecast_info->forecast[$i]->attributes()->text)];
 	                            	} else {
 	                            	   $this->cond_tmp = current($forecast_info->forecast[$i]->attributes()->text);
