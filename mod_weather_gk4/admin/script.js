@@ -27,7 +27,7 @@ window.addEvent("domready",function(){
 	// demo link
 	new Element('a', { 'href' : 'http://isithackday.com/geoplanet-explorer/', 'target' : '_blank',  'id' : 'gkDemoLink', 'html' : 'WOEID'  }).inject(document.id('jform_params_WOEID'), 'after');
 	// help link
-	var link = new Element('a', { 'class' : 'gkHelpLink', 'href' : 'http://tools.gavick.com/weather.html', 'target' : '_blank' })
+	var link = new Element('a', { 'class' : 'gkHelpLink', 'href' : 'https://www.gavick.com/weather-gk4.html', 'target' : '_blank' })
 	link.inject($$('div.panel')[$$('div.panel').length-1].getElement('h3'), 'bottom');
 	link.addEvent('click', function(e) { e.stopPropagation(); });
 });
