@@ -160,7 +160,21 @@ class GKWHelper {
             "Rain/Snow Showers"					=> JText::_('MOD_WEATHER_GK4_RAIN_SNOW_SHOWERS'),
             "PM Rain/Snow Showers"				=> JText::_('MOD_WEATHER_GK4_PM_RAIN_SNOW_SHOWERS'),
             "Light Snow"						=> JText::_('MOD_WEATHER_GK4_LIGHT_SNOW'),
-            "Snow Showers Late"					=> JText::_('MOD_WEATHER_GK4_SNOW_SHOWERS_LATE')   
+            "Snow Showers Late"					=> JText::_('MOD_WEATHER_GK4_SNOW_SHOWERS_LATE'),
+            "AM Showers"						=> JText::_('MOD_WEATHER_GK4_AM_SHOWERS'),
+            "PM Rain Snow"						=> JText::_('MOD_WEATHER_GK4_PM_RAIN_SNOW'),
+            "Showers Early"						=> JText::_('MOD_WEATHER_GK4_SHOWERS_EARLY'),
+            "Rain/Snow"							=> JText::_('MOD_WEATHER_GK4_RAIN_SNOW'),
+            "AM Rain"							=> JText::_('MOD_WEATHER_GK4_AM_RAIN'),
+            "AM Rain/Snow Showers"				=> JText::_('MOD_WEATHER_GK4_AM_RAIN_SNOW_SHOWERS'),
+            "Mostly Sunny"						=> JText::_('MOD_WEATHER_GK4_MOSTLY_SUNNY'),
+            "AM Snow Showers"					=> JText::_('MOD_WEATHER_GK4_AM_SNOW_SHOWERS'),
+            "Light Snow Grains"					=> JText::_('MOD_WEATHER_GK4_LIGHT_SNOW_GRAINS'),
+            "Light Freezing Drizzle"			=> JText::_('MOD_WEATHER_GK4_LIGHT_FREEZING_DRIZZLE'),
+            "Sunny/Wind"						=> JText::_('MOD_WEATHER_GK4_LIGHT_SUNNY_WIND'),
+            "Rain and Snow"						=> JText::_('MOD_WEATHER_GK4_RAIN_AND_SNOW'),
+            "Light Rain with Thunder"			=> JText::_('MOD_WEATHER_GK4_LIGHT_RAIN_WITH_THUNDER')
+               
         );
 		// parsed from XML data
 		$this->parsedData = array(
