@@ -1,2 +1,54 @@
-<backup>
-</backup>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+		<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+			<channel>
+		
+<title>Yahoo! Weather - Warsaw, PL</title>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html</link>
+<description>Yahoo! Weather for Warsaw, PL</description>
+<language>en-us</language>
+<lastBuildDate>Sun, 02 Mar 2014 10:58 pm CET</lastBuildDate>
+<ttl>60</ttl>
+<location city="Warsaw" region=""   country="Poland"/>
+<units temperature="C" distance="km" pressure="mb" speed="km/h"/>
+<wind chill="-3"   direction="100"   speed="14.48" />
+<atmosphere humidity="100"  visibility="9.99"  pressure="982.05"  rising="0" />
+<astronomy sunrise="6:20 am"   sunset="5:15 pm"/>
+<image>
+<title>Yahoo! Weather</title>
+<width>142</width>
+<height>18</height>
+<link>http://weather.yahoo.com</link>
+<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+</image>
+<item>
+<title>Conditions for Warsaw, PL at 10:58 pm CET</title>
+<lat>52.24</lat>
+<long>21.01</long>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html</link>
+<pubDate>Sun, 02 Mar 2014 10:58 pm CET</pubDate>
+<condition  text="Mostly Cloudy"  code="27"  temp="1"  date="Sun, 02 Mar 2014 10:58 pm CET" />
+<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/27.gif"/><br />
+<b>Current Conditions:</b><br />
+Mostly Cloudy, 1 C<BR />
+<BR /><b>Forecast:</b><BR />
+Sun - Mostly Cloudy. High: 9 Low: 1<br />
+Mon - Partly Cloudy. High: 10 Low: 1<br />
+Tue - PM Showers. High: 6 Low: 2<br />
+Wed - Cloudy. High: 7 Low: 2<br />
+Thu - Cloudy. High: 7 Low: 2<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Warsaw__PL/*http://weather.yahoo.com/forecast/PLXX0028_c.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+<forecast day="Sun" date="2 Mar 2014" low="1" high="9" text="Mostly Cloudy" code="27" />
+<forecast day="Mon" date="3 Mar 2014" low="1" high="10" text="Partly Cloudy" code="30" />
+<forecast day="Tue" date="4 Mar 2014" low="2" high="6" text="PM Showers" code="39" />
+<forecast day="Wed" date="5 Mar 2014" low="2" high="7" text="Cloudy" code="26" />
+<forecast day="Thu" date="6 Mar 2014" low="2" high="7" text="Cloudy" code="26" />
+<guid isPermaLink="false">PLXX0028_2014_03_06_7_00_CET</guid>
+</item>
+</channel>
+</rss>
+
+<!-- fan1676.sports.bf1.yahoo.com Sun Mar  2 22:32:09 PST 2014 -->
