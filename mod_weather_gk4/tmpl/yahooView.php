@@ -15,7 +15,14 @@ defined('_JEXEC') or die('Restricted access');
 	<?php if($this->config['showPresent'] == 1) : ?>
     <div class="gkwCurrent">
 		<div class="gkwMainLeft">
-			<img src="<?php echo $this->icon($this->parsedData['current_icon'], $this->config['current_icon_size']); ?>" alt="<?php echo $this->parsedData['current_condition']; ?>" />
+			<?php if(
+				$this->config['iconset'] == 'meteocons_font_dark' ||
+				$this->config['iconset'] == 'meteocons_font_light'
+			) : ?>
+				<i class="meteocons-<?php echo str_replace('.png', '', $this->icon($this->parsedData['current_icon'], 32, true)); ?><?php if($this->config['iconset'] == 'meteocons_font_dark') : ?> dark<?php else: ?> light<?php endif; ?> size-<?php echo $this->config['current_icon_size']; ?>"></i>
+			<?php else : ?>
+				<img src="<?php echo $this->icon($this->parsedData['current_icon'], $this->config['current_icon_size']); ?>" alt="<?php echo $this->parsedData['current_condition']; ?>" />
+			<?php endif; ?>
 			<p class="gkwTemp"><?php echo $this->parsedData['current_temp'] ?></p>
 		</div>
 		<div class="gkwMainRight">
@@ -34,7 +41,14 @@ defined('_JEXEC') or die('Restricted access');
 			<div class="gkwFday">
 				<span class="gkwDay"><?php echo $this->parsedData['forecast'][$i]['day']; ?></span>
 				<p class="gkwDayTemp">
-                	<img src="<?php echo $this->icon($this->parsedData['forecast'][$i]['icon'], $this->config['forecast_icon_size']); ?>" title="<?php echo $this->parsedData['forecast'][$i]['condition']; ?>" alt="<?php echo $this->parsedData['forecast'][$i]['condition']; ?>" />
+                	<?php if(
+                		$this->config['iconset'] == 'meteocons_font_dark' ||
+                		$this->config['iconset'] == 'meteocons_font_light'
+                	) : ?>
+                		<i class="meteocons-<?php echo str_replace('.png', '', $this->icon($this->parsedData['current_icon'], 32, true)); ?><?php if($this->config['iconset'] == 'meteocons_font_dark') : ?> dark<?php else: ?> light<?php endif; ?> size-<?php echo $this->config['forecast_icon_size']; ?>"></i>
+                	<?php else : ?>
+                		<img src="<?php echo $this->icon($this->parsedData['forecast'][$i]['icon'], $this->config['forecast_icon_size']); ?>" title="<?php echo $this->parsedData['forecast'][$i]['condition']; ?>" alt="<?php echo $this->parsedData['forecast'][$i]['condition']; ?>" />
+                	<?php endif; ?>
 					<span class="gkwDayDay"><?php echo $this->parsedData['forecast'][$i]['high']; ?></span>
 					<span class="gkwDayNight"><?php echo $this->parsedData['forecast'][$i]['low']; ?></span>
 				</p>

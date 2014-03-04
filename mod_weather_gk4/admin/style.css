@@ -1,6 +1,8 @@
-.gkHelpLink { float: right !important; width: 22px; height: 21px; cursor: pointer; margin-left: 10px; background: transparent url('interface.png') repeat-x 0 -70px !important; }small:hover.gkHelpLink { background-position: 0 -47px !important; }
+.gkHelpLink { float: right !important; width: 22px; height: 21px; cursor: pointer; margin-left: 10px; background: transparent url('interface.png') repeat-x 0 -70px !important; }
+small:hover.gkHelpLink { background-position: 0 -47px !important; }
 #gkDemoLink { color: #C78900; line-height: 36px; margin: 0 0 0 10px; }
-#gkDemoLink:hover { text-decoration:none; color: #222; }label#jform_params_about_us-lbl,
+#gkDemoLink:hover { text-decoration:none; color: #222; }
+label#jform_params_about_us-lbl,
 label#jform_params_module_updates-lbl { display: none }
 /* Updates */
 #gk_module_updates { margin: 20px -10px 0 }
@@ -13,7 +15,7 @@ span.gk_update_link a { padding: 4px 12px; -moz-border-radius: 26px; background:
 span.gk_update_link a:hover { background: #222; text-decoration: none; }
 #gk_module_updates p { color: #555 }
 ul.gk_updates li { list-style: none; clear: both;  border-right: 1px solid #eee }
-ul.gk_updates { max-width: 600px }
+ul.gk_updates { max-width: 600px; overflow: hidden; border: 1px solid #eee }
 /* Support for mobile */
 @media (max-width: 480px) {
 	.form-horizontal .controls { clear: both!important; }
@@ -26,5 +28,63 @@ ul.gk_updates { max-width: 600px }
 	.chzn-container, .chzn-drop {
 		width: auto !important;
 	}
+    .j32 ul#myTabTabs > li { width: auto!important; }
+	.j32 ul#myTabTabs,
+	.j32 div#myTabContent { width: 100%!important; }
+	.j32 div#myTabContent > div { margin-left: 0!important; }
+}
 
-}
+/* Joomla! 3.2.x styles */
+.j32 ul#myTabTabs {
+	width: 20%;
+	float: left;
+	border-bottom: 0;
+	border-right: 1px solid #fafafa;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.j32 #jform_note { max-width: 220px; }
+.j32 #jform_params_cacheTime {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+.j32 .input-prepend .add-on { margin-left: -1px; margin-right: 0; }
+.j32 ul#myTabTabs > li {
+	width: 90%;
+	margin: 2px 0;
+}
+.j32 ul#myTabTabs > li > a {
+	color: #666;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.j32 ul#myTabTabs > li.active > a {
+	color: #fff;
+	background: #59B1F6;
+	border-color: #2587d3;
+}
+.j32 div#myTabContent {
+	float: right;
+	width: 80%;
+}
+.j32 div#myTabContent > div { margin-left: 35px }
+.j32 #general .span3 { width: 100% }
+.j32 #general .span9 { display: none }
+.j32 #jform_menuselect {
+	clear: both;
+	width: 100%;
+	margin: 0;
+}
+.j32 #config_manager_form {
+	position: relative;
+}
+.j32 > .form-inline-header > .control-group {
+	width: 100%;
+}
+.j32 > .form-inline-header > .control-group > .control-label { width: 10%; float: left; padding: 0!important; line-height: 32px }
+.j32 > .form-inline-header > .control-group > .controls { width: 90%; float: left; padding: 0!important }
+.j32 > .form-inline-header > .control-group > .controls > input { max-width: 99%; width: 99%}

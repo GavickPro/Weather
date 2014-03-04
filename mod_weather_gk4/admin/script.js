@@ -1,10 +1,13 @@
 jQuery(document).ready(function() {
 	getUpdates();
-	
+	// check Joomla! version and add suffix
+	if((jQuery('#gk_about_us').data('jversion')).substr(0,3) == '3.2') {
+		jQuery('#module-form').addClass('j32');
+	}
 	// other form operations
-	$$('.input-minutes').each(function(el){el.getParent().innerHTML = "<div class=\"input-prepend\">" + el.getParent().innerHTML + "<span class=\"add-on\">minutes</span></div>"});
-	document.id('gk_module_updates').getParent().setStyle('margin-left', '20px');	
-	document.id('gk_about_us').getParent().setStyle('margin-left', '20px');
+	jQuery('.input-minutes').each(function(i, el){jQuery(el).parent().html("<div class=\"input-prepend\">" + jQuery(el).parent().html() + "<span class=\"add-on\">minutes</span></div>");});
+	jQuery('#gk_module_updates').parent().css('margin-left', '20px');	
+	jQuery('#gk_about_us').parent().css('margin-left', '20px');
 	
 	// WOEID link
 	var woeidLink = jQuery('<a>', { 'href' : 'http://isithackday.com/geoplanet-explorer/', 'target' : '_blank',  'id' : 'gkDemoLink', 'html' : 'WOEID'});
@@ -29,16 +32,16 @@ function getUpdates() {
 	var content='';
 	
 	jQuery.getScript(update_url, function(data, textStatus, jqxhr) {
-		jQuery($GK_UPDATE).each(function(i, el){								        
-            content += '<li><span class="gk_update_version"><strong>Version:</strong> ' + el.version + ' </span><span class="gk_update_data"><strong>Date:</strong> ' + el.date + ' </span><span class="gk_update_link"><a href="' + el.link + '" target="_blank">Download</a></span></li>';
-	     });
-	         
-        update_div.html('<ul class="gk_updates">' + content + '</ul>');
-        if(update_div.html() == '<ul class="gk_updates"></ul>') {
-        	update_div.html('<p>There is no available updates for this module</p>'); 
-    	}
-    	if(update_div.html() == '<ul class="gk_updates"></ul>') {
-    		update_div.html('<p>There is no available updates for this module</p>'); 
-    	}
-	  });	
+		jQuery($GK_UPDATE).each(function(i,el) {					        
+			content += '<li><span class="gk_update_version"><strong>Version:</strong> ' + el.version + ' </span><span class="gk_update_data"><strong>Date:</strong> ' + el.date + ' </span><span class="gk_update_link"><a href="' + el.link + '" target="_blank">Download</a></span></li>';
+		});
+	
+		update_div.html('<ul class="gk_updates">' + content + '</ul>');
+		if(update_div.html() == '<ul class="gk_updates"></ul>') {
+			update_div.html('<p>There is no available updates for this module</p>'); 
+		}
+		if(update_div.html() == '<ul class="gk_updates"></ul>') {
+			update_div.html('<p>There is no available updates for this module</p>'); 
+		}
+	});	
 }

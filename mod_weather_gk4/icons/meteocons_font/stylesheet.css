@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'MeteoconsRegular';
+    src: url('meteocons-webfont.eot');
+    src: url('meteocons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('meteocons-webfont.woff') format('woff'),
+         url('meteocons-webfont.ttf') format('truetype'),
+         url('meteocons-webfont.svg#MeteoconsRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i[class^="meteocons-"] {
+	display: block;
+	font-family: 'MeteoconsRegular';
+	font-style: normal;
+}
+
+i[class^="meteocons-"].dark {
+	color: #222;
+}
+i[class^="meteocons-"].light {
+	color: #eee;
+}
+i[class^="meteocons-"].size-128 {
+	font-size: 128px;
+	line-height: 128px
+}
+i[class^="meteocons-"].size-64 {
+	font-size: 64px;
+	line-height: 64px;
+}
+i[class^="meteocons-"].size-32 {
+	font-size: 32px;
+	line-height: 32px;
+}
+
+.meteocons-chance_of_rain_night:before { content: "7"; }
+.meteocons-chance_of_rain:before { content: "Q"; }
+.meteocons-chance_of_snow_night:before { content: '"'; }
+.meteocons-chance_of_snow:before { content: 'U'; }
+.meteocons-chance_of_storm_night:before { content: '6'; }
+.meteocons-chance_of_storm:before { content: 'O'; }
+.meteocons-cloudly:before { content: 'Y'; }
+.meteocons-cloudy:before { content: 'N'; }
+.meteocons-dusty:before { content: 'E'; }
+.meteocons-flurries:before { content: 'V'; }
+.meteocons-foggy_night:before { content: 'K'; }
+.meteocons-foggy:before { content: 'J'; }
+.meteocons-hazy_night:before { content: 'K'; }
+.meteocons-hazy:before { content: 'L'; }
+.meteocons-icy:before { content: "'"; }
+.meteocons-mist_night:before { content: 'K'; }
+.meteocons-mist:before { content: 'A'; }
+.meteocons-mostly_cloudy_night:before { content: '4'; }
+.meteocons-mostly_cloudy:before { content: '3'; }
+.meteocons-other:before { content: ')'; }
+.meteocons-partly_cloudy_night:before { content: 'I'; }
+.meteocons-partly_cloudy:before { content: 'H'; }
+.meteocons-rain_and_snow:before { content: 'X'; }
+.meteocons-rain:before { content: 'R'; }
+.meteocons-showers_night:before { content: '$'; }
+.meteocons-showers:before { content: 'X'; }
+.meteocons-sleet:before { content: 'X'; }
+.meteocons-smoke_night:before { content: 'K'; }
+.meteocons-smoke:before { content: 'M'; }
+.meteocons-snow:before { content: 'W'; }
+.meteocons-storm:before { content: 'Z'; }
+.meteocons-sunny_night:before { content: "C"; }
+.meteocons-sunny:before { content: "B"; }
+.meteocons-thunderstorm:before { content: "0"; }
+

@@ -395,6 +395,12 @@ class GKWHelper {
 			if($this->config["useCSS"] == 1){
 				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/style/style.css', 'text/css' );
 			}
+			if(
+				$this->config['iconset'] == 'meteocons_font_dark' ||
+				$this->config['iconset'] == 'meteocons_font_light'
+			) {
+				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/icons/meteocons_font/stylesheet.css', 'text/css' );
+			}
 			// include necessary view
 			require(JModuleHelper::getLayoutPath('mod_weather_gk4', ($this->config['source'] == 'google') ? 'googleView' : 'yahooView'));
 		} else { // else - output error information
@@ -403,6 +409,12 @@ class GKWHelper {
 			$uri =& JURI::getInstance();
 				if($this->config["useCSS"] == 1){
 				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/style/style.css', 'text/css' );
+			}
+			if(
+				$this->config['iconset'] == 'meteocons_font_dark' ||
+				$this->config['iconset'] == 'meteocons_font_light'
+			) {
+				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/icons/meteocons_font/stylesheet.css', 'text/css' );
 			}
 			// include necessary view
 			require(JModuleHelper::getLayoutPath('mod_weather_gk4', ($this->config['source'] == 'google') ? 'googleView' : 'yahooView'));
@@ -449,7 +461,7 @@ class GKWHelper {
 	/*
 	 * Function to get correct icon
 	 */
-	function icon($icon, $size = 128) {
+	function icon($icon, $size = 128, $font = false) {
 		// creating JURI instance
 		$uri =& JURI::getInstance();
 		$icon_path = $uri->root().'modules/mod_weather_gk4/icons/'.$this->config['iconset'].'/'.(($size == 128) ? '' : $size.'/');
@@ -470,9 +482,15 @@ class GKWHelper {
 						if(time() < $sunrise || time() > $sunset) {
 							$night = true; // now is night! :P
 						}
-						// getting final icon - if selected icon has two icons - for day and night - return correct icon
+						// getting final icon - if selected icon has two icons - for day and night - return correct icon					
+						if($font) {
+							return $this->icons[$icon][(count($this->icons[$icon]) > 1 && $night) ? 1 : 0];
+						}
 						return $icon_path . $this->icons[$icon][(count($this->icons[$icon]) > 1 && $night) ? 1 : 0];
 					} else {
+						if($font) {
+							return $this->icons[$icon][0];
+						}
 						return $icon_path . $this->icons[$icon][0];
 					}
 				} 
@@ -486,12 +504,21 @@ class GKWHelper {
 						if(time() < $sunrise || time() > $sunset) {
 							$night = true; // now is night! :P
 						}
+						if($font) {
+							return $this->icons[$icon][(count($this->icons[$icon]) > 1 && $night) ? 1 : 0];
+						}
 						// getting final icon - if selected icon has two icons - for day and night - return correct icon
 						return $icon_path . $this->icons[$icon][(count($this->icons[$icon]) > 1 && $night) ? 1 : 0];
 	            } else {
+	            	if($font) {
+						return $this->icons[$icon][0];
+					}
 					return $icon_path . $this->icons[$icon][0];
 				}
 			} else { // else - return "?" icon
+				if($font) {
+					return 'other.png';
+				}
 				return $icon_path . 'other.png';
 			}
 		} else {

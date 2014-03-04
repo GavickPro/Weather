@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.0" client="site" method="upgrade">
         <name>mod_weather_gk4</name>
-		<creationDate>27/05/2013</creationDate>
+		<creationDate>04/03/2014</creationDate>
 		<author>gavick.com</author>
-        <copyright>(C) 2009-2013 Gavick.com</copyright>
+        <copyright>(C) 2009-2014 Gavick.com</copyright>
         <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
         <authorEmail>info@gavick.com</authorEmail>
         <authorUrl>www.gavick.com</authorUrl>
@@ -18,7 +18,7 @@
         	span.readonly p.homepage { margin-top: 30px }
         	span.readonly p.license { border-top: 1px solid #eee; font-size: 11px; margin: 30px 26px 0; padding: 6px 0; }
         	</style>
-        	<span class="readonly"><h1>Weather GK4<small>ver. 1.6.7</small></h1><p>GK4 is new generation of our extensions dedicated to Joomla! 3.0.</p><p>Weather GK4 is a module allowing to present weather forecast and current weather conditions in a location given. It supports  Yahoo! API Weather.</p> 
+        	<span class="readonly"><h1>Weather GK4<small>ver. 1.6.7</small></h1><p>GK4 is new generation of our extensions dedicated to Joomla! 3.x.</p><p>Weather GK4 is a module allowing to present weather forecast and current weather conditions in a location given. It supports  Yahoo! API Weather.</p> 
             <p>Thanks to Alessio Atzeni (<a href="http://dribbble.com/bluxart">http://dribbble.com/bluxart</a>) kindness, the Weather GK4 module has an additional icons set called <em>Meteocons</em>.</p>
             <p class='homepage'><a href='http://tools.gavick.com/weather.html' target='_blank'>Learn more at the Weather GK4 project website.</a></p><p class='license'>Weather GK4 is released under the <a target="_blank" href="http://www.gnu.org/licenses/gpl-2.0.html">GNU/GPL v2 license.</a></p></span>
         ]]></description>
@@ -43,9 +43,9 @@
 
                     <field type="asset" path="modules/mod_weather_gk4/admin/" />
 
-                    <field name="moduleclass_sfx" type="text" class="input-small" default="" label="MOD_WEATHER_GK4_MODCLASSSUFFIX" description="MOD_WEATHER_GK4_MODCLASSSUFFIX_DESC" />   
+                    <field name="moduleclass_sfx" type="text" class="input-medium" default="" label="MOD_WEATHER_GK4_MODCLASSSUFFIX" description="MOD_WEATHER_GK4_MODCLASSSUFFIX_DESC" />   
 
-                    <field name="module_unique_id" type="text" class="input-small" default="weather1" label="MOD_WEATHER_GK4_MODID" description="MOD_WEATHER_GK4_MODID_DESC" />
+                    <field name="module_unique_id" type="text" class="input-medium" default="weather1" label="MOD_WEATHER_GK4_MODID" description="MOD_WEATHER_GK4_MODID_DESC" />
                 </fieldset>   
 
 				<fieldset name="MOD_WEATHER_GK4_SOURCE" addfieldpath="/modules/mod_weather_gk4/admin/elements">
@@ -115,7 +115,7 @@
 
     			<fieldset name="MOD_WEATHER_GK4_LAYOUT" addfieldpath="/modules/mod_weather_gk4/admin/elements">	
 
-                    <field name="moduleMode" type="radio" class="btn-group" default="1" label="MOD_WEATHER_GK4_MODMODE" description="MOD_WEATHER_GK4_MODMODE_DESC">
+                    <field name="moduleMode" type="radio" default="vertical" class="btn-group" label="MOD_WEATHER_GK4_MODMODE" description="MOD_WEATHER_GK4_MODMODE_DESC">
     					<option value="vertical">MOD_WEATHER_GK4_VERTICAL</option>
                         <option value="horizontal">MOD_WEATHER_GK4_HORIZONTAL</option>
                     </field>
@@ -155,6 +155,8 @@
                         <option value="yahoo">MOD_WEATHER_GK4_YAHOO_SET</option>
                         <option value="meteocons_dark">MOD_WEATHER_GK4_METEOCONSD</option>
                         <option value="meteocons_light">MOD_WEATHER_GK4_METEOCONSL</option>
+                        <option value="meteocons_font_dark">MOD_WEATHER_GK4_METEOCONSD_FONT</option>
+						<option value="meteocons_font_light">MOD_WEATHER_GK4_METEOCONSL_FONT</option>
                     </field>
                     
                     <field name="current_icon_size" type="radio" class="btn-group" default="64" label="MOD_WEATHER_GK4_CICONSIZE" description="MOD_WEATHER_GK4_CICONSIZE_DESC">
