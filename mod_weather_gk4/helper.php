@@ -454,7 +454,7 @@ class GKWHelper {
 			
 			if(
 				$this->config['iconset'] == 'meteocons_font_dark' ||
-				$this->config['iconset'] == 'meteocons_font_dark'
+				$this->config['iconset'] == 'meteocons_font_light'
 			) {
 				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/icons/meteocons_font/stylesheet.css', 'text/css' );
 			}
@@ -472,7 +472,7 @@ class GKWHelper {
 			
 			if(
 				$this->config['iconset'] == 'meteocons_font_dark' ||
-				$this->config['iconset'] == 'meteocons_font_dark'
+				$this->config['iconset'] == 'meteocons_font_light'
 			) {
 				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/icons/meteocons_font/stylesheet.css', 'text/css' );
 			}
