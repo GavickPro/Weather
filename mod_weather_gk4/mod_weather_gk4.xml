@@ -7,11 +7,7 @@
         <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
         <authorEmail>info@gavick.com</authorEmail>
         <authorUrl>www.gavick.com</authorUrl>
-<<<<<<< HEAD
         <version>1.7.0</version>
-=======
-        <version>1.6.7</version>
->>>>>>> FETCH_HEAD
         <description><![CDATA[
         	<style type="text/css">
         	span.readonly { padding: 10px; font-family: Arial; font-size:13px !important; font-weight: normal !important; text-align: justify; color: #4d4d4d; line-height: 24px; }
