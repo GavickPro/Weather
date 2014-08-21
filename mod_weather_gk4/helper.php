@@ -221,8 +221,8 @@ class GKWHelper {
 		clearstatcache();
 		
 		if($this->config['useCache'] == 1) {
-			if(filesize(realpath('cache/mod_weather.bxml')) == 0 || ((filemtime(realpath('cache/mod_weather.bxml')) + $this->config['cacheTime'] * 60) < time())) {
-				if(function_exists('curl_init')) {
+                  if(filesize(realpath(JPATH_BASE.'/modules/mod_weather_gk4/cache/mod_weather.bxml')) == 0 || ((filemtime(realpath(JPATH_BASE.'/modules/mod_weather_gk4/cache/mod_weather.bxml')) + $this->config['cacheTime'] * 60) < time())) {
+                        if(function_exists('curl_init')) {
 					// initializing connection
 					$curl = curl_init();
 					// saves us before putting directly results of request
@@ -235,7 +235,7 @@ class GKWHelper {
 				    	curl_setopt($curl, CURLOPT_URL, 'http://weather.yahooapis.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']);
 				    }
 					// timeout in seconds
-					curl_setopt($curl, CURLOPT_TIMEOUT, 20);
+					curl_setopt($curl, CURLOPT_TIMEOUT, 5);
 					// useragent
 					curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 					// reading content
