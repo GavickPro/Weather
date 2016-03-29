@@ -230,7 +230,7 @@ class GKWHelper {
 				    if($this->config['source'] == 'google'){
 				    	curl_setopt($curl, CURLOPT_URL, 'http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 				    } else {
-				    	curl_setopt($curl, CURLOPT_URL, 'http://weather.yahooapis.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']);
+				    	curl_setopt($curl, CURLOPT_URL, 'http://xml.weather.yahoo.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']);
 				    }
 					// timeout in seconds
 					curl_setopt($curl, CURLOPT_TIMEOUT, 5);
@@ -247,7 +247,7 @@ class GKWHelper {
 	                    $encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';
 	                    $this->content = file_get_contents('http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 	                } else {
-	                    $this->content = file_get_contents('http://weather.yahooapis.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']);
+	                    $this->content = file_get_contents('http://xml.weather.yahoo.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']);
 	                }
                 } else {
 					$this->error = 'cURL extension and file_get_content method is not available on your server';
@@ -277,7 +277,7 @@ class GKWHelper {
 					$encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';    
 					curl_setopt($curl, CURLOPT_URL, 'http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 				} else {
-					curl_setopt($curl, CURLOPT_URL, 'http://weather.yahooapis.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']); 
+					curl_setopt($curl, CURLOPT_URL, 'http://xml.weather.yahoo.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']); 
 				}
 				// timeout in seconds
 				curl_setopt($curl, CURLOPT_TIMEOUT, 20);
@@ -293,7 +293,7 @@ class GKWHelper {
                 if($this->config['source'] == 'google'){
                     $this->content = file_get_contents('http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
                 } else {
-                    $this->content = file_get_contents('http://weather.yahooapis.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit'].$encoding_url);
+                    $this->content = file_get_contents('http://xml.weather.yahoo.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit'].$encoding_url);
                 }
             } else {
 				$this->error = 'cURL extension and file_get_content method is not available on your server';
