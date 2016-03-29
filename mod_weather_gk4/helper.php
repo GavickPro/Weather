@@ -304,83 +304,90 @@ class GKWHelper {
 	 *	PARSING DATA
 	 **/
 	function parseData() {
-		if($this->error === '') {
+		if($this->error !== '') {
+                  $this->error = 'Parse error in downloaded data (400)'; // set error
+            }
             // checking for 400 Bad request page
-			if(strpos($this->content, '400 Bad') == FALSE) {	
-				if($this->config['source'] == 'yahoo'){
-                        $this->content = str_replace('yweather:','', $this->content);
-                        $this->content = str_replace('geo:','', $this->content);
-                        // load the XML content
-						if($this->content == '') {
-								$this->useBackup();
-						}
-						$xml = JFactory::getXML($this->content, false);
-                        if($xml) {
-	                       	if(strpos(current($xml->channel[0]->description), "Error") == FALSE) {
-							$problem = false;
-	                        $current_info = $xml->channel[0];
-	                        $current_info2 = $xml->channel[0]->item[0];
-	                        $forecast_info = $xml->channel[0]->item[0];
-	                        
-	                       
-	                        if(
-								isset($current_info->units[0]) &&
-								isset($current_info2->condition[0]) &&
-								isset($current_info->atmosphere[0]) &&
-								isset($current_info->image[0]) &&
-	                            isset($current_info->location[0]) &&
-								isset($current_info->wind[0])
-							) {
-	                            // loading data from feed
-	                            if(isset($this->translation[current($current_info2->condition[0]->attributes()->text)])){
-									$this->parsedData['current_condition'] = $this->translation[current($current_info2->condition[0]->attributes()->text)];
-	                            } else {
-	                           		$this->parsedData['current_condition'] = current($current_info2->condition[0]->attributes()->text);  
-	                            }
-								$this->parsedData['current_temp'] = current($current_info2->condition[0]->attributes()->temp)."&deg;".current($current_info->units[0]->attributes()->temperature);
-								$this->parsedData['current_humidity'] = JText::_('MOD_WEATHER_GK4_HUMIDITY') ." " .current($current_info->atmosphere[0]->attributes()->humidity)."%";
-	                            $this->parsedData['current_icon'] = current($current_info2->condition[0]->attributes()->code);
-								$this->parsedData['current_wind'] = JText::_('MOD_WEATHER_GK4_WIND') ." ".current($current_info->wind[0]->attributes()->speed)." ".current($current_info->units[0]->attributes()->speed);
-	                            $this->parsedData['sunrise'] = current($current_info->astronomy[0]->attributes()->sunrise);
-	                            $this->parsedData['sunset'] = current($current_info->astronomy[0]->attributes()->sunset);
-	                            // parsing forecast
-	                            for($i = 0; $i < 2; $i++) {
-	                            	if(isset($this->translation[current($forecast_info->forecast[$i]->attributes()->text)])){
-	                            		$this->cond_tmp = $this->translation[current($forecast_info->forecast[$i]->attributes()->text)];
-	                            	} else {
-	                            	   $this->cond_tmp = current($forecast_info->forecast[$i]->attributes()->text);
-	                            	}
-	                            	$this->parsedData['forecast'][$i] = array(
-										"day" => $this->translateDate(current($forecast_info->forecast[$i]->attributes()->date)),
-										"low" => current($forecast_info->forecast[$i]->attributes()->low)."&deg;".current($current_info->units[0]->attributes()->temperature),
-										"high" => current($forecast_info->forecast[$i]->attributes()->high)."&deg;".current($current_info->units[0]->attributes()->temperature),
-	                                    "icon" => current($forecast_info->forecast[$i]->attributes()->code),
-										"condition" => $this->cond_tmp,
-									);
-								}
-							} else {
-								$problem = true; // set the problem 
-								$this->error = 'An error occured during parsing XML data. Please try again.';
-							}
-							// if problem detected
-							if($problem == true) {
-								$this->error = 'An error occured during parsing XML data. Please try again.';
-							} else {
-							    // prepare a backup
-							    JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml', $this->content);
-							}
-						} else { // if specified location doesn't exist
-							$this->error = 'An error occured - you set wrong location or data for your location are unavailable';
-						}
-	                } else {
-						$this->error = 'Parse error in downloaded data'; // set error
-					}
-	        	}
-	        } else {
-				$this->error = 'Parse error in downloaded data (400)'; // set error
-			}
-		}
-    }
+            if(strpos($this->content, '400 Bad') !== FALSE) {	
+                  return;
+            }
+
+            if($this->config['source'] != 'yahoo'){
+                  return;
+            }
+
+            $this->content = str_replace('yweather:','', $this->content);
+            $this->content = str_replace('geo:','', $this->content);
+            
+            // load the XML content
+            if($this->content == '') {
+                  $this->useBackup();
+            }
+
+            $xml = JFactory::getXML($this->content, false);
+
+            if(!$xml) {
+                  $this->error = 'Parse error in downloaded data'; // set error
+            }
+            
+            if(strpos(current($xml->channel[0]->description), "Error") != FALSE) {
+                  $this->error = 'An error occured - you set wrong location or data for your location are unavailable';
+            }
+
+            $problem = false;
+            $current_info = $xml->channel[0];
+            $current_info2 = $xml->channel[0]->item[0];
+            $forecast_info = $xml->channel[0]->item[0];
+
+            if(
+                  isset($current_info->units[0]) &&
+                  isset($current_info2->condition[0]) &&
+                  isset($current_info->atmosphere[0]) &&
+                  isset($current_info->image[0]) &&
+                  isset($current_info->location[0]) &&
+                  isset($current_info->wind[0])
+            ) {
+                  // loading data from feed
+                  if(isset($this->translation[current($current_info2->condition[0]->attributes()->text)])){
+                        $this->parsedData['current_condition'] = $this->translation[current($current_info2->condition[0]->attributes()->text)];
+                  } else {
+                        $this->parsedData['current_condition'] = current($current_info2->condition[0]->attributes()->text);  
+                  }
+
+                  $this->parsedData['current_temp'] = current($current_info2->condition[0]->attributes()->temp)."&deg;".current($current_info->units[0]->attributes()->temperature);
+                  $this->parsedData['current_humidity'] = JText::_('MOD_WEATHER_GK4_HUMIDITY') ." " .current($current_info->atmosphere[0]->attributes()->humidity)."%";
+                  $this->parsedData['current_icon'] = current($current_info2->condition[0]->attributes()->code);
+                  $this->parsedData['current_wind'] = JText::_('MOD_WEATHER_GK4_WIND') ." ".current($current_info->wind[0]->attributes()->speed)." ".current($current_info->units[0]->attributes()->speed);
+                  $this->parsedData['sunrise'] = current($current_info->astronomy[0]->attributes()->sunrise);
+                  $this->parsedData['sunset'] = current($current_info->astronomy[0]->attributes()->sunset);
+                  // parsing forecast
+                  for($i = 0; $i < 2; $i++) {
+                        if(isset($this->translation[current($forecast_info->forecast[$i]->attributes()->text)])){
+                              $this->cond_tmp = $this->translation[current($forecast_info->forecast[$i]->attributes()->text)];
+                        } else {
+                              $this->cond_tmp = current($forecast_info->forecast[$i]->attributes()->text);
+                        }
+
+                        $this->parsedData['forecast'][$i] = array(
+                              "day" => $this->translateDate(current($forecast_info->forecast[$i]->attributes()->date)),
+                              "low" => current($forecast_info->forecast[$i]->attributes()->low)."&deg;".current($current_info->units[0]->attributes()->temperature),
+                              "high" => current($forecast_info->forecast[$i]->attributes()->high)."&deg;".current($current_info->units[0]->attributes()->temperature),
+                              "icon" => current($forecast_info->forecast[$i]->attributes()->code),
+                              "condition" => $this->cond_tmp,
+                        );
+                  }
+            } else {
+                  $problem = true; // set the problem 
+                  $this->error = 'An error occured during parsing XML data. Please try again.';
+            }
+            // if problem detected
+            if($problem == true) {
+                  $this->error = 'An error occured during parsing XML data. Please try again.';
+            } else {
+                  // prepare a backup
+                  JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml', $this->content);
+            }
+      }
 	/** 
 	 *	RENDERING LAYOUT
 	 **/
@@ -389,8 +396,8 @@ class GKWHelper {
 		if($this->error === '') {
 			
 			// create instances of basic Joomla! classes
-			$document =& JFactory::getDocument();
-			$uri =& JURI::getInstance();
+			$document = JFactory::getDocument();
+			$uri = JURI::getInstance();
 			// add stylesheets to document header
 			if($this->config["useCSS"] == 1){
 				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/style/style.css', 'text/css' );
@@ -405,8 +412,8 @@ class GKWHelper {
 			require(JModuleHelper::getLayoutPath('mod_weather_gk4', ($this->config['source'] == 'google') ? 'googleView' : 'yahooView'));
 		} else { // else - output error information
 			$this->useBackup();
-			$document =& JFactory::getDocument();
-			$uri =& JURI::getInstance();
+			$document = JFactory::getDocument();
+			$uri = JURI::getInstance();
 				if($this->config["useCSS"] == 1){
 				$document->addStyleSheet( $uri->root().'modules/mod_weather_gk4/style/style.css', 'text/css' );
 			}
@@ -463,7 +470,7 @@ class GKWHelper {
 	 */
 	function icon($icon, $size = 128, $font = false) {
 		// creating JURI instance
-		$uri =& JURI::getInstance();
+		$uri = JURI::getInstance();
 		$icon_path = $uri->root().'modules/mod_weather_gk4/icons/'.$this->config['iconset'].'/'.(($size == 128) ? '' : $size.'/');
 		
 		if($this->config['iconset'] != 'yahoo') {
