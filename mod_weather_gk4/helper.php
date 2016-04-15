@@ -230,7 +230,7 @@ class GKWHelper {
 				    if($this->config['source'] == 'google'){
 				    	curl_setopt($curl, CURLOPT_URL, 'http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 				    } else {
-				    	curl_setopt($curl, CURLOPT_URL, 'http://xml.weather.yahoo.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']);
+				    	curl_setopt($curl, CURLOPT_URL, 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20=%20'.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
 				    }
 					// timeout in seconds
 					curl_setopt($curl, CURLOPT_TIMEOUT, 5);
@@ -247,7 +247,7 @@ class GKWHelper {
 	                    $encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';
 	                    $this->content = file_get_contents('http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 	                } else {
-	                    $this->content = file_get_contents('http://xml.weather.yahoo.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']);
+	                    $this->content = file_get_contents('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20=%20'.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
 	                }
                 } else {
 					$this->error = 'cURL extension and file_get_content method is not available on your server';
@@ -277,7 +277,7 @@ class GKWHelper {
 					$encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';    
 					curl_setopt($curl, CURLOPT_URL, 'http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 				} else {
-					curl_setopt($curl, CURLOPT_URL, 'http://xml.weather.yahoo.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit']); 
+					curl_setopt($curl, CURLOPT_URL, 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20=%20'.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'); 
 				}
 				// timeout in seconds
 				curl_setopt($curl, CURLOPT_TIMEOUT, 20);
@@ -293,7 +293,7 @@ class GKWHelper {
                 if($this->config['source'] == 'google'){
                     $this->content = file_get_contents('http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
                 } else {
-                    $this->content = file_get_contents('http://xml.weather.yahoo.com/forecastrss?w='.$this->config['WOEID']."&u=".$this->config['tempUnit'].$encoding_url);
+                    $this->content = file_get_contents('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20=%20'.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
                 }
             } else {
 				$this->error = 'cURL extension and file_get_content method is not available on your server';
@@ -330,14 +330,14 @@ class GKWHelper {
                   $this->error = 'Parse error in downloaded data'; // set error
             }
             
-            if(strpos(current($xml->channel[0]->description), "Error") != FALSE) {
+            if(strpos(current($xml->results[0]->channel[0]->description), "Error") != FALSE) {
                   $this->error = 'An error occured - you set wrong location or data for your location are unavailable';
             }
 
             $problem = false;
-            $current_info = $xml->channel[0];
-            $current_info2 = $xml->channel[0]->item[0];
-            $forecast_info = $xml->channel[0]->item[0];
+            $current_info = $xml->results[0]->channel[0];
+            $current_info2 = $xml->results[0]->channel[0]->item[0];
+            $forecast_info = $xml->results[0]->channel[0]->item[0];
 
             if(
                   isset($current_info->units[0]) &&
