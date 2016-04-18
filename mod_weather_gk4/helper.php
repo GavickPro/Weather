@@ -230,7 +230,7 @@ class GKWHelper {
 				    if($this->config['source'] == 'google'){
 				    	curl_setopt($curl, CURLOPT_URL, 'http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 				    } else {
-				    	curl_setopt($curl, CURLOPT_URL, 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20=%20'.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
+				    	curl_setopt($curl, CURLOPT_URL, 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid='.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
 				    }
 					// timeout in seconds
 					curl_setopt($curl, CURLOPT_TIMEOUT, 5);
@@ -247,7 +247,7 @@ class GKWHelper {
 	                    $encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';
 	                    $this->content = file_get_contents('http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 	                } else {
-	                    $this->content = file_get_contents('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20=%20'.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
+	                    $this->content = file_get_contents('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid='.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
 	                }
                 } else {
 					$this->error = 'cURL extension and file_get_content method is not available on your server';
@@ -277,7 +277,7 @@ class GKWHelper {
 					$encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';    
 					curl_setopt($curl, CURLOPT_URL, 'http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 				} else {
-					curl_setopt($curl, CURLOPT_URL, 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20=%20'.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'); 
+					curl_setopt($curl, CURLOPT_URL, 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid='.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'); 
 				}
 				// timeout in seconds
 				curl_setopt($curl, CURLOPT_TIMEOUT, 20);
