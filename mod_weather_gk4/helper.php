@@ -12,6 +12,7 @@
 defined('_JEXEC') or die('Restricted access');
 // Main class
 class GKWHelper {
+	var $id;
 	var $config;
 	var $content;
 	var $error;
@@ -20,14 +21,16 @@ class GKWHelper {
     var $translation;
     var $cond_tmp;
 	/**
-	 *	INITIALIZATION 
+	 *	INITIALIZATION
 	 **/
-	function __construct($params) {		
-		// importing JFile class 
+	function __construct($params, $module) {
+		// importing JFile class
 		jimport('joomla.filesystem.file');
+		// Set unique module ID
+		$this->id = $module->id;
 		// configuration array
 		$this->config = array(
-			'module_unique_id' => '',				            
+			'module_unique_id' => '',
             'city' => '',
 			'fcity' => '',
             'language' => 'en',
@@ -49,7 +52,7 @@ class GKWHelper {
 			'WOEID' => '',
 			'iconset' => 'default',
             't_offset' => '0'
-		); 
+		);
 		// error text
 		$this->error = '';
 		// icons array
@@ -58,31 +61,31 @@ class GKWHelper {
             "1"                                  => array('storm.png','storm_night.png'),
             "2"                                  => array('storm.png','storm_night.png'),
             "3"                                  => array('chance_of_storm.png','chance_of_storm_night.png'),
-            "4"                                  => array('thunderstorm.png'),          
+            "4"                                  => array('thunderstorm.png'),
             "5"                                  => array('rain_and_snow.png'),
             "6"                                  => array('sleet.png'),
-            "7"                                  => array('sleet.png'),     
-            "8"                                  => array('rain.png'),    
-            "9"                                  => array('rain.png'),     
+            "7"                                  => array('sleet.png'),
+            "8"                                  => array('rain.png'),
+            "9"                                  => array('rain.png'),
             "10"                                 => array('rain.png'),
             "11"                                 => array('rain.png'),
             "12"                                 => array('rain.png'),
-            "13"                                 => array('chance_of_snow.png', 'chance_of_snow_night.png'),                               
+            "13"                                 => array('chance_of_snow.png', 'chance_of_snow_night.png'),
             "14"                                 => array('snow.png'),
             "15"                                 => array('snow.png'),
             "16"                                 => array('snow.png'),
-            "17"                                 => array('chance_of_storm.png','chance_of_storm_night.png'),  
+            "17"                                 => array('chance_of_storm.png','chance_of_storm_night.png'),
             "18"                                 => array('rain.png'),
             "19"                                 => array('dusty.png'),
             "20"                                 => array('foggy.png','foggy_night.png'),
             "21"                                 => array('hazy.png','hazy_night.png'),
             "22"                                 => array('smoke.png','smoke_night.png'),
             "23"                                 => array('cloudy.png'),
-            "24"                                 => array('cloudy.png'),      
+            "24"                                 => array('cloudy.png'),
             "25"                                 => array('snow.png'),
             "26"                                 => array('cloudy.png'),
-            "27"                                 => array('mostly_cloudy.png','mostly_cloudy_night.png'), 
-            "28"                                 => array('mostly_cloudy.png','mostly_cloudy_night.png'), 
+            "27"                                 => array('mostly_cloudy.png','mostly_cloudy_night.png'),
+            "28"                                 => array('mostly_cloudy.png','mostly_cloudy_night.png'),
             "29"                                 => array('partly_cloudy.png','partly_cloudy_night.png'),
             "30"                                 => array('partly_cloudy.png','partly_cloudy_night.png'),
             "31"                                 => array('sunny.png','sunny_night.png'),
@@ -174,7 +177,7 @@ class GKWHelper {
             "Sunny/Wind"						=> JText::_('MOD_WEATHER_GK4_LIGHT_SUNNY_WIND'),
             "Rain and Snow"						=> JText::_('MOD_WEATHER_GK4_RAIN_AND_SNOW'),
             "Light Rain with Thunder"			=> JText::_('MOD_WEATHER_GK4_LIGHT_RAIN_WITH_THUNDER')
-               
+
         );
 		// parsed from XML data
 		$this->parsedData = array(
@@ -214,12 +217,12 @@ class GKWHelper {
 	}
 	/**
 	 *	GETTING DATA
-	 **/	
+	 **/
 	function getData() {
 		clearstatcache();
-		
+
 		if($this->config['useCache'] == 1) {
-                  if(filesize(realpath(JPATH_BASE.'/modules/mod_weather_gk4/cache/mod_weather.bxml')) == 0 || ((filemtime(realpath(JPATH_BASE.'/modules/mod_weather_gk4/cache/mod_weather.bxml')) + $this->config['cacheTime'] * 60) < time())) {
+                  if(filesize(realpath(JPATH_BASE.'/modules/mod_weather_gk4/cache/mod_weather-'.($this->id).'.bxml')) == 0 || ((filemtime(realpath(JPATH_BASE.'/modules/mod_weather_gk4/cache/mod_weather-'.($this->id).'.bxml')) + $this->config['cacheTime'] * 60) < time())) {
                         if(function_exists('curl_init')) {
 					// initializing connection
 					$curl = curl_init();
@@ -240,7 +243,7 @@ class GKWHelper {
 					$this->content = curl_exec($curl);
 					// closing connection
 					curl_close($curl);
-				} 
+				}
                 // check file_get_contents function enable and allow external url's'
                 else if( file_get_contents(__FILE__) && ini_get('allow_url_fopen') && !function_exists('curl_init')) {
 	                if($this->config['source'] == 'google'){
@@ -256,13 +259,13 @@ class GKWHelper {
 				if($this->error == '') {
 					// saving cache
 					if($this->content !='') {
-						JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.bxml', $this->content);
+						JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather-'.($this->id).'.bxml', $this->content);
 					}
 				} else {
-				    $this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
+				    $this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather-'.($this->id).'.backup.bxml');
 				}
 			} else {
-				$this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
+				$this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather-'.($this->id).'.backup.bxml');
 			}
 		} else {
 			if(function_exists('curl_init')) {
@@ -274,10 +277,10 @@ class GKWHelper {
 				$encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';
 				// check the source of query
 				if($this->config['source'] == 'google'){
-					$encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';    
+					$encoding_url = ($this->config['encoding'] != '') ? '&oe='.$this->config['encoding'] : '';
 					curl_setopt($curl, CURLOPT_URL, 'http://www.google.com/ig/api?weather='.$this->config['city'].'&hl='.$this->config['language'].$encoding_url);
 				} else {
-					curl_setopt($curl, CURLOPT_URL, 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid='.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'); 
+					curl_setopt($curl, CURLOPT_URL, 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid='.$this->config['WOEID'].'%20and%20u%20=%20\''.$this->config['tempUnit'].'\'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys');
 				}
 				// timeout in seconds
 				curl_setopt($curl, CURLOPT_TIMEOUT, 20);
@@ -287,7 +290,7 @@ class GKWHelper {
 				$this->content = curl_exec($curl);
 				// closing connection
 				curl_close($curl);
-			} 
+			}
             // check file_get_contents function enable and allow external url's'
             else if( file_get_contents(__FILE__) && ini_get('allow_url_fopen') && !function_exists('curl_init')) {
                 if($this->config['source'] == 'google'){
@@ -308,7 +311,7 @@ class GKWHelper {
                   $this->error = 'Parse error in downloaded data (400)'; // set error
             }
             // checking for 400 Bad request page
-            if(strpos($this->content, '400 Bad') !== FALSE) {	
+            if(strpos($this->content, '400 Bad') !== FALSE) {
                   return;
             }
 
@@ -318,7 +321,7 @@ class GKWHelper {
 
             $this->content = str_replace('yweather:','', $this->content);
             $this->content = str_replace('geo:','', $this->content);
-            
+
             // load the XML content
             if($this->content == '') {
                   $this->useBackup();
@@ -329,7 +332,7 @@ class GKWHelper {
             if(!$xml) {
                   $this->error = 'Parse error in downloaded data'; // set error
             }
-            
+
             if(strpos(current($xml->results[0]->channel[0]->description), "Error") != FALSE) {
                   $this->error = 'An error occured - you set wrong location or data for your location are unavailable';
             }
@@ -351,7 +354,7 @@ class GKWHelper {
                   if(isset($this->translation[current($current_info2->condition[0]->attributes()->text)])){
                         $this->parsedData['current_condition'] = $this->translation[current($current_info2->condition[0]->attributes()->text)];
                   } else {
-                        $this->parsedData['current_condition'] = current($current_info2->condition[0]->attributes()->text);  
+                        $this->parsedData['current_condition'] = current($current_info2->condition[0]->attributes()->text);
                   }
 
                   $this->parsedData['current_temp'] = current($current_info2->condition[0]->attributes()->temp)."&deg;".current($current_info->units[0]->attributes()->temperature);
@@ -377,7 +380,7 @@ class GKWHelper {
                         );
                   }
             } else {
-                  $problem = true; // set the problem 
+                  $problem = true; // set the problem
                   $this->error = 'An error occured during parsing XML data. Please try again.';
             }
             // if problem detected
@@ -385,16 +388,16 @@ class GKWHelper {
                   $this->error = 'An error occured during parsing XML data. Please try again.';
             } else {
                   // prepare a backup
-                  JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml', $this->content);
+                  JFile::write(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather-'.($this->id).'.backup.bxml', $this->content);
             }
       }
-	/** 
+	/**
 	 *	RENDERING LAYOUT
 	 **/
-	function renderLayout() {	
+	function renderLayout() {
 		// if any error exists
 		if($this->error === '') {
-			
+
 			// create instances of basic Joomla! classes
 			$document = JFactory::getDocument();
 			$uri = JURI::getInstance();
@@ -432,18 +435,18 @@ class GKWHelper {
      */
     function useBackup() {
         $this->error = '';
-        $this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather.backup.bxml');
+        $this->content = JFile::read(JPATH_SITE.DS.'modules/mod_weather_gk4/cache/mod_weather-'.($this->id).'.backup.bxml');
     }
-    
-    
+
+
     /*
      *
      */
     function translateDate($date) {
-    
+
     	preg_match('/[A-Za-z]{3,}/', $date, $month);
      	$replace = '';
-   		
+
     	switch($month[0]) {
     		case 'Jan' : $replace = JText::_('MOD_WEATHER_GK4_JAN'); break;
     		case 'Feb' : $replace = JText::_('MOD_WEATHER_GK4_FEB'); break;
@@ -459,12 +462,12 @@ class GKWHelper {
     		case 'Dec' : $replace = JText::_('MOD_WEATHER_GK4_DEC'); break;
     		default: $replace = $month[0];
     	}
-    	
+
     	$date = str_replace($month[0], $replace, $date);
-    	
+
     	return $date;
-    } 
-     
+    }
+
 	/*
 	 * Function to get correct icon
 	 */
@@ -472,7 +475,7 @@ class GKWHelper {
 		// creating JURI instance
 		$uri = JURI::getInstance();
 		$icon_path = $uri->root().'modules/mod_weather_gk4/icons/'.$this->config['iconset'].'/'.(($size == 128) ? '' : $size.'/');
-		
+
 		if($this->config['iconset'] != 'yahoo') {
 			// if selected icon exists
 			if(is_array($this->icons[$icon])) {
@@ -489,7 +492,7 @@ class GKWHelper {
 						if(time() < $sunrise || time() > $sunset) {
 							$night = true; // now is night! :P
 						}
-						// getting final icon - if selected icon has two icons - for day and night - return correct icon					
+						// getting final icon - if selected icon has two icons - for day and night - return correct icon
 						if($font) {
 							return $this->icons[$icon][(count($this->icons[$icon]) > 1 && $night) ? 1 : 0];
 						}
@@ -500,7 +503,7 @@ class GKWHelper {
 						}
 						return $icon_path . $this->icons[$icon][0];
 					}
-				} 
+				}
 	            // if user use yahoo feed
 	            else if ($this->config['source']=='yahoo' && isset($this->parsedData['sunrise']) && isset($this->parsedData['sunset'])){
 	                    $sunrise = $this->prepareTime($this->parsedData['sunrise'])+$this->config['t_offset']*3600;
@@ -538,7 +541,7 @@ class GKWHelper {
 	function temp($temp) {
 		if($this->parsedData['unit'] == 'US' && $this->config['tempUnit'] == 'c') return $this->F2Cel($temp);
 		else if($this->parsedData['unit'] == 'SI' && $this->config['tempUnit'] == 'f') return $this->Cel2F($temp);
-		else return $temp.(($this->config['tempUnit'] == 'c') ? '&deg;C' : '&deg;F' );		
+		else return $temp.(($this->config['tempUnit'] == 'c') ? '&deg;C' : '&deg;F' );
 	}
     /*
      * Function to parse sunrise/sunset time to timestamp
@@ -557,7 +560,7 @@ class GKWHelper {
     }
 	/*
  	 * function to parse Farhenheit to Celsius
- 	 */    
+ 	 */
     function F2Cel($value) {
     	return round((5/9) * ($value - 32)).'&deg;C';
     }

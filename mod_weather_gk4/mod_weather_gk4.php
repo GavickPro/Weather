@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 /**
 * Gavick Weather GK4 - main file
 * @package Joomla!
@@ -15,22 +11,22 @@
 **/
 
 // access restriction
-
-
 defined('_JEXEC') or die('Restricted access');
+
 if(!defined('DS')){
    define('DS',DIRECTORY_SEPARATOR);
 }
+
 // Loading helper class
 require_once (dirname(__FILE__).DS.'helper.php');
+
 // initialize the module and get the XML data
-
-$helper = new GKWHelper($params);
+$helper = new GKWHelper($params, $module);
 $helper->getData();
-// try to parse the data
 
+// try to parse the data
 try{
-    $helper->parseData();    
+    $helper->parseData();
 } catch (Exception $e) {
 	// use backup
     $helper->useBackup();
@@ -38,9 +34,7 @@ try{
     $helper->parseData();
 }
 
-
 // render the module output
 $helper->renderLayout();
 
-
-/*eof*/
+// EOF
